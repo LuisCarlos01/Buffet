@@ -1,0 +1,126 @@
+import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react"
+
+export function Footer() {
+  return (
+    <footer className="bg-card border-t border-border">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+                <span className="text-2xl text-primary-foreground font-bold">B</span>
+              </div>
+              <span className="text-xl font-bold text-foreground">Buffet Show</span>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Transformando eventos em experiências gastronômicas inesquecíveis há mais de 15 anos.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-foreground mb-4">Links Rápidos</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="#como-funciona" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Como Funciona
+                </a>
+              </li>
+              <li>
+                <a href="#diferenciais" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Diferenciais
+                </a>
+              </li>
+              <li>
+                <a href="#galeria" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Galeria
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a href="#contato" className="text-muted-foreground hover:text-primary transition-colors text-sm">
+                  Contato
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-foreground mb-4">Serviços</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>Casamentos</li>
+              <li>Eventos Corporativos</li>
+              <li>Aniversários</li>
+              <li>Formaturas</li>
+              <li>Confraternizações</li>
+              <li>Eventos Sociais</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-foreground mb-4">Contato</h3>
+            <ul className="space-y-3">
+              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Phone className="w-4 h-4 text-primary" />
+                (11) 98765-4321
+              </li>
+              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Mail className="w-4 h-4 text-primary" />
+                contato@buffetshow.com.br
+              </li>
+              <li className="flex items-start gap-2 text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                <span>
+                  Av. Paulista, 1000
+                  <br />
+                  São Paulo - SP
+                </span>
+              </li>
+            </ul>
+
+            <div className="flex gap-3 mt-6">
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5 text-primary group-hover:text-primary-foreground" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5 text-primary group-hover:text-primary-foreground" />
+              </a>
+              <a
+                href="#"
+                className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5 text-primary group-hover:text-primary-foreground" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-border pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+            <p>© 2025 Buffet Show. Todos os direitos reservados.</p>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-primary transition-colors">
+                Política de Privacidade
+              </a>
+              <a href="#" className="hover:text-primary transition-colors">
+                Termos de Uso
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}

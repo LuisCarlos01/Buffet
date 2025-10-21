@@ -1,0 +1,46 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
+
+export function HowItWorks() {
+  return (
+    <section className="py-20 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Text Content */}
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">COMO FUNCIONA NOSSO BUFFET?</h2>
+
+            <p className="text-lg text-foreground/80 leading-relaxed mb-8">
+              Levamos a experiência completa de um buffet de alta qualidade até você! Seja em casa, no salão de festas,
+              na empresa ou até em um sítio, nossa equipe cuida de tudo para que você aproveite sem preocupações.
+            </p>
+
+            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8">
+              SOLICITAR ORÇAMENTO
+            </Button>
+          </div>
+
+          {/* Video Placeholder */}
+          <div className="relative aspect-video rounded-lg overflow-hidden shadow-2xl">
+            <div
+              className="w-full h-full bg-muted flex items-center justify-center"
+              style={{
+                backgroundImage:
+                  "url(/placeholder.svg?height=720&width=1280&query=professional+buffet+service+team+preparing+elegant+food+display)",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
+                  <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-primary border-b-8 border-b-transparent ml-1" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
