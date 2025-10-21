@@ -13,7 +13,7 @@ export function Footer() {
               <span className="text-xl font-bold text-foreground">Buffet Show</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Transformando eventos em experiências gastronômicas inesquecíveis há mais de 15 anos.
+              Transformando eventos em experiências gastronômicas inesquecíveis!
             </p>
           </div>
 
@@ -65,18 +65,18 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
-                (11) 98765-4321
+                (35) 99140-4039
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
-                contato@buffetshow.com.br
+                pierrotbuffet@gmail.com
               </li>
               <li className="flex items-start gap-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                 <span>
-                  Av. Paulista, 1000
+                  R. Resense Silva, 18
                   <br />
-                  São Paulo - SP
+                  Varginha - MG
                 </span>
               </li>
             </ul>
@@ -109,7 +109,7 @@ export function Footer() {
 
         <div className="border-t border-border pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <p>© 2025 Buffet Show. Todos os direitos reservados.</p>
+            <p>© 2025 Buffet Pierroti Eventos. Todos os direitos reservados.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-primary transition-colors">
                 Política de Privacidade

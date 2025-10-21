@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card"
+import Image from "next/image"
 
 export function Differentials() {
   const differentials = [
@@ -6,16 +7,22 @@ export function Differentials() {
       title: "Ingredientes Premium",
       description: "Trabalhamos apenas com ingredientes selecionados e de alta qualidade para garantir o melhor sabor.",
       image: "/buffet-images/fresh-premium-ingredients-vegetables-meats-gourmet.jpg",
+      width: 400,
+      height: 256,
     },
     {
       title: "Equipe Profissional",
       description: "Nossa equipe é treinada e experiente, garantindo um serviço impecável do início ao fim.",
       image: "/buffet-images/professional-catering-staff-in-uniform-serving-ele.jpg",
+      width: 400,
+      height: 256,
     },
     {
       title: "Cardápio Personalizado",
       description: "Criamos cardápios sob medida para seu evento, respeitando preferências e restrições alimentares.",
       image: "/buffet-images/elegant-buffet-menu-variety-of-gourmet-dishes.jpg",
+      width: 400,
+      height: 256,
     },
   ]
 
@@ -30,14 +37,18 @@ export function Differentials() {
               key={index}
               className="overflow-hidden bg-card border-2 border-accent/20 hover:border-accent transition-colors"
             >
-              <div
-                className="h-64 bg-muted"
-                style={{
-                  backgroundImage: `url(${item.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              />
+              <div className="relative h-64 bg-muted">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={item.width}
+                  height={item.height}
+                  className="w-full h-full object-cover"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
 
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-card-foreground mb-4">{item.title}</h3>
