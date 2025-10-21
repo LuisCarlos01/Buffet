@@ -1,3 +1,5 @@
+'use client';
+
 import { HeroSection } from '@/components/hero-section';
 import { HowItWorks } from '@/components/how-it-works';
 import { ProcessSteps } from '@/components/process-steps';
@@ -7,8 +9,11 @@ import { Gallery } from '@/components/gallery';
 import { FAQ } from '@/components/faq';
 import { ContactForm } from '@/components/contact-form';
 import { Footer } from '@/components/footer';
+import { useSmoothScroll } from '@/hooks/use-smooth-scroll';
 
 export default function Home() {
+  useSmoothScroll();
+
   return (
     <main className='min-h-screen'>
       <HeroSection />

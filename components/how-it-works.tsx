@@ -1,10 +1,13 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { useFadeInAnimation } from '@/hooks/use-fade-in';
 
 export function HowItWorks() {
+  const fadeInRef = useFadeInAnimation();
+
   return (
-    <section id='como-funciona' className='py-20 bg-background'>
+    <section ref={fadeInRef} id='como-funciona' className='py-20 bg-background fade-in-section'>
       <div className='container mx-auto px-4'>
         <div className='grid lg:grid-cols-2 gap-8 md:gap-12 items-center'>
           {/* Text Content */}

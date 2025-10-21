@@ -1,6 +1,10 @@
+'use client';
+
 import Image from 'next/image';
+import { useFadeInAnimation } from '@/hooks/use-fade-in';
 
 export function Gallery() {
+  const fadeInRef = useFadeInAnimation();
   const images = [
     {
       url: '/buffet-images/elegant-buffet-table-with-gourmet-dishes.jpg',
@@ -41,7 +45,7 @@ export function Gallery() {
   ];
 
   return (
-    <section id='galeria' className='py-20 px-4 bg-muted/30'>
+    <section ref={fadeInRef} id='galeria' className='py-20 px-4 bg-muted/30 fade-in-section'>
       <div className='container mx-auto max-w-6xl'>
         <div className='text-center mb-12 md:mb-16'>
           <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 px-4'>

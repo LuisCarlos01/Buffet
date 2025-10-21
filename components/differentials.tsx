@@ -1,7 +1,11 @@
+'use client';
+
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
+import { useFadeInAnimation } from '@/hooks/use-fade-in';
 
 export function Differentials() {
+  const fadeInRef = useFadeInAnimation();
   const differentials = [
     {
       title: 'Ingredientes Premium',
@@ -33,8 +37,9 @@ export function Differentials() {
 
   return (
     <section
+      ref={fadeInRef}
       id='diferenciais'
-      className='py-20 bg-primary text-primary-foreground'
+      className='py-20 bg-primary text-primary-foreground fade-in-section'
     >
       <div className='container mx-auto px-4'>
         <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 md:mb-16 px-4'>

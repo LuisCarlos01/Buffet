@@ -11,14 +11,14 @@ export function Footer() {
               <div className='w-12 h-12 flex items-center justify-center'>
                 <Image
                   src='/logos/Pierroti_Logo_Vermelha.svg'
-                  alt='Buffet Pierroti Eventos'
+                  alt='Pierroti Buffet e Eventos'
                   width={48}
                   height={48}
                   className='w-full h-full object-contain'
                 />
               </div>
               <span className='text-xl font-bold text-foreground'>
-                Buffet Pierrot Eventos
+                Pierroti Buffet e Eventos
               </span>
             </div>
             <p className='text-muted-foreground text-sm leading-relaxed'>
@@ -34,7 +34,7 @@ export function Footer() {
               <li>
                 <a
                   href='#como-funciona'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm'
+                  className='text-muted-foreground hover:text-primary smooth-link text-sm'
                 >
                   Como Funciona
                 </a>
@@ -42,7 +42,7 @@ export function Footer() {
               <li>
                 <a
                   href='#diferenciais'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm'
+                  className='text-muted-foreground hover:text-primary smooth-link text-sm'
                 >
                   Diferenciais
                 </a>
@@ -50,7 +50,7 @@ export function Footer() {
               <li>
                 <a
                   href='#galeria'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm'
+                  className='text-muted-foreground hover:text-primary smooth-link text-sm'
                 >
                   Galeria
                 </a>
@@ -58,7 +58,7 @@ export function Footer() {
               <li>
                 <a
                   href='#faq'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm'
+                  className='text-muted-foreground hover:text-primary smooth-link text-sm'
                 >
                   FAQ
                 </a>
@@ -66,7 +66,7 @@ export function Footer() {
               <li>
                 <a
                   href='#contato'
-                  className='text-muted-foreground hover:text-primary transition-colors text-sm'
+                  className='text-muted-foreground hover:text-primary smooth-link text-sm'
                 >
                   Contato
                 </a>
@@ -132,7 +132,7 @@ export function Footer() {
         <div className='border-t border-border pt-8'>
           <div className='flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground'>
             <p>
-              © 2025 Buffet Pierroti Eventos. Todos os direitos reservados.
+              © 2025 Pierroti Buffet e Eventos. Todos os direitos reservados.
             </p>
             <div className='flex gap-6'>
               <a
