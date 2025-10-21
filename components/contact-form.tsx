@@ -4,7 +4,8 @@ import type React from "react"
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Phone, Mail, MapPin, Send } from "lucide-react"
+import { Phone, Mail, MapPin, Send, MessageCircle } from "lucide-react"
+import { openWhatsApp, validateFormData, type WhatsAppMessage } from "@/lib/whatsapp-utils"
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -15,12 +16,49 @@ export function ContactForm() {
     guests: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errors, setErrors] = useState<string[]>([])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aqui você pode adicionar a lógica de envio do formulário
-    console.log("Form submitted:", formData)
-    alert("Mensagem enviada com sucesso! Entraremos em contato em breve.")
+    setIsSubmitting(true)
+    setErrors([])
+
+    // Validar dados do formulário
+    const validation = validateFormData(formData)
+    
+    if (!validation.isValid) {
+      setErrors(validation.errors)
+      setIsSubmitting(false)
+      return
+    }
+
+    try {
+      // Preparar dados para WhatsApp
+      const whatsappData: WhatsAppMessage = {
+        ...formData,
+        source: 'contact'
+      }
+
+      // Abrir WhatsApp
+      openWhatsApp(whatsappData)
+      
+      // Limpar formulário após envio
+      setFormData({ 
+        name: "", 
+        email: "", 
+        phone: "", 
+        eventDate: "", 
+        guests: "", 
+        message: "" 
+      })
+      
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error)
+      setErrors(['Erro ao enviar mensagem. Tente novamente.'])
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -43,6 +81,18 @@ export function ContactForm() {
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Exibir erros */}
+              {errors.length > 0 && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-sm text-red-600">
+                  <h4 className="font-semibold mb-2">Por favor, corrija os seguintes erros:</h4>
+                  <ul className="list-disc list-inside space-y-1">
+                    {errors.map((error, index) => (
+                      <li key={index}>{error}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                   Nome Completo *
@@ -54,7 +104,8 @@ export function ContactForm() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -70,7 +121,8 @@ export function ContactForm() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                   />
                 </div>
 
@@ -85,7 +137,8 @@ export function ContactForm() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -102,7 +155,8 @@ export function ContactForm() {
                     required
                     value={formData.eventDate}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                   />
                 </div>
 
@@ -118,7 +172,8 @@ export function ContactForm() {
                     min="50"
                     value={formData.guests}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -142,9 +197,10 @@ export function ContactForm() {
                 type="submit"
                 size="lg"
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                disabled={isSubmitting}
               >
                 <Send className="w-5 h-5 mr-2" />
-                Enviar Solicitação
+                {isSubmitting ? "Enviando..." : "Enviar Solicitação"}
               </Button>
             </form>
           </div>
@@ -188,11 +244,27 @@ export function ContactForm() {
 
             <div className="bg-card p-6 rounded-2xl border border-border">
               <h4 className="font-semibold text-foreground mb-3">Horário de Atendimento</h4>
-              <div className="space-y-2 text-muted-foreground">
+              <div className="space-y-2 text-muted-foreground mb-4">
                 <p>Segunda a Sexta: 9h às 18h</p>
                 <p>Sábado: 9h às 14h</p>
                 <p>Domingo: Fechado</p>
               </div>
+              
+              <Button
+                onClick={() => {
+                  const quickMessage: WhatsAppMessage = {
+                    name: "Cliente",
+                    email: "contato@site.com",
+                    phone: "(35) 99999-9999",
+                    source: 'contact'
+                  }
+                  openWhatsApp(quickMessage)
+                }}
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Falar no WhatsApp
+              </Button>
             </div>
           </div>
         </div>
