@@ -202,44 +202,84 @@
   
   /* Carousel 3D Styles */
   .carousel-3d-container {
-    perspective: 1000px;
+    perspective: 1200px;
     perspective-origin: center center;
-    height: 400px;
+    height: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: radial-gradient(circle at center, rgba(198, 54, 54, 0.05) 0%, transparent 70%);
+    border-radius: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .carousel-3d-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(198, 54, 54, 0.03) 50%, transparent 70%);
+    pointer-events: none;
   }
   
   .carousel-3d-track {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: grab;
+  }
+  
+  .carousel-3d-track.dragging {
+    cursor: grabbing;
+    transition: none;
   }
   
   .carousel-3d-item {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     transform-style: preserve-3d;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  
+  .carousel-3d-item:hover {
+    transform: rotateY(var(--rotation, 0deg)) translateZ(320px) scale(1.05);
   }
   
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .carousel-3d-container {
-      height: 300px;
+      height: 350px;
+      border-radius: 1.5rem;
     }
     
     .carousel-3d-track {
-      width: 250px;
-      height: 250px;
+      width: 280px;
+      height: 280px;
     }
     
     .carousel-3d-item {
-      width: 250px;
-      height: 250px;
+      width: 280px;
+      height: 280px;
     }
+  }
+  
+  /* Premium button styles */
+  .premium-button {
+    background: linear-gradient(135deg, rgba(198, 54, 54, 0.1) 0%, rgba(165, 42, 42, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(198, 54, 54, 0.2);
+    box-shadow: 0 8px 32px rgba(198, 54, 54, 0.1);
+  }
+  
+  .premium-button:hover {
+    background: linear-gradient(135deg, rgba(198, 54, 54, 0.9) 0%, rgba(165, 42, 42, 0.9) 100%);
+    box-shadow: 0 12px 40px rgba(198, 54, 54, 0.3);
+    transform: translateY(-2px);
   }
 }

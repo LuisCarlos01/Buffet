@@ -1,14 +1,24 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Pause,
+  RotateCcw,
+} from 'lucide-react';
 import { useFadeInAnimation } from '@/hooks/use-fade-in';
 
 export function Gallery() {
   const fadeInRef = useFadeInAnimation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState(0);
+  const [rotation, setRotation] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const images = [
     {
@@ -72,6 +82,65 @@ export function Gallery() {
     setIsAutoPlaying(!isAutoPlaying);
   };
 
+  const resetCarousel = () => {
+    setCurrentIndex(0);
+    setRotation(0);
+  };
+
+  // Drag functionality
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setDragStart(e.clientX);
+    setIsAutoPlaying(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+
+    const deltaX = e.clientX - dragStart;
+    const sensitivity = 0.5;
+    const newRotation = rotation + deltaX * sensitivity;
+    setRotation(newRotation);
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+
+    setIsDragging(false);
+
+    // Snap to nearest image
+    const snapRotation = Math.round(rotation / 60) * 60;
+    setRotation(snapRotation);
+    setCurrentIndex(Math.round(snapRotation / 60) % images.length);
+  };
+
+  // Touch events for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setDragStart(e.touches[0].clientX);
+    setIsAutoPlaying(false);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+
+    const deltaX = e.touches[0].clientX - dragStart;
+    const sensitivity = 0.5;
+    const newRotation = rotation + deltaX * sensitivity;
+    setRotation(newRotation);
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+
+    setIsDragging(false);
+
+    // Snap to nearest image
+    const snapRotation = Math.round(rotation / 60) * 60;
+    setRotation(snapRotation);
+    setCurrentIndex(Math.round(snapRotation / 60) % images.length);
+  };
+
   return (
     <section
       ref={fadeInRef}
@@ -92,10 +161,18 @@ export function Gallery() {
         <div className='relative'>
           <div className='carousel-3d-container'>
             <div
-              className='carousel-3d-track'
+              ref={carouselRef}
+              className={`carousel-3d-track ${isDragging ? 'dragging' : ''}`}
               style={{
-                transform: `translateZ(-300px) rotateY(${currentIndex * -60}deg)`,
+                transform: `translateZ(-300px) rotateY(${rotation}deg)`,
               }}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               {images.map((image, index) => (
                 <div
@@ -124,46 +201,65 @@ export function Gallery() {
           </div>
 
           {/* Navigation Controls */}
-          <div className='flex justify-center items-center gap-4 mt-8'>
+          <div className='flex justify-center items-center gap-6 mt-12'>
             <button
               onClick={prevImage}
-              className='w-12 h-12 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110'
+              className='w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 hover:from-primary hover:to-accent flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl backdrop-blur-sm border border-primary/20'
               aria-label='Imagem anterior'
             >
-              <ChevronLeft className='w-6 h-6 text-primary hover:text-primary-foreground' />
+              <ChevronLeft className='w-7 h-7 text-primary hover:text-primary-foreground' />
             </button>
 
             <button
               onClick={toggleAutoPlay}
-              className='w-12 h-12 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110'
+              className='w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 hover:from-primary hover:to-accent flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl backdrop-blur-sm border border-primary/20'
               aria-label={isAutoPlaying ? 'Pausar' : 'Reproduzir'}
             >
               {isAutoPlaying ? (
-                <Pause className='w-6 h-6 text-primary hover:text-primary-foreground' />
+                <Pause className='w-7 h-7 text-primary hover:text-primary-foreground' />
               ) : (
-                <Play className='w-6 h-6 text-primary hover:text-primary-foreground' />
+                <Play className='w-7 h-7 text-primary hover:text-primary-foreground' />
               )}
             </button>
 
             <button
+              onClick={resetCarousel}
+              className='w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 hover:from-primary hover:to-accent flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl backdrop-blur-sm border border-primary/20'
+              aria-label='Resetar carousel'
+            >
+              <RotateCcw className='w-7 h-7 text-primary hover:text-primary-foreground' />
+            </button>
+
+            <button
               onClick={nextImage}
-              className='w-12 h-12 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-all duration-300 hover:scale-110'
+              className='w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 hover:from-primary hover:to-accent flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl backdrop-blur-sm border border-primary/20'
               aria-label='Próxima imagem'
             >
-              <ChevronRight className='w-6 h-6 text-primary hover:text-primary-foreground' />
+              <ChevronRight className='w-7 h-7 text-primary hover:text-primary-foreground' />
             </button>
           </div>
 
+          {/* Instructions */}
+          <div className='text-center mt-6'>
+            <p className='text-sm text-muted-foreground/70'>
+              💡 Arraste para navegar livremente • Clique nos botões para
+              controle preciso
+            </p>
+          </div>
+
           {/* Dots Indicator */}
-          <div className='flex justify-center gap-2 mt-6'>
+          <div className='flex justify-center gap-3 mt-8'>
             {images.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setRotation(index * -60);
+                }}
+                className={`w-4 h-4 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? 'bg-primary scale-125'
-                    : 'bg-primary/30 hover:bg-primary/50'
+                    ? 'bg-gradient-to-r from-primary to-accent scale-125 shadow-lg'
+                    : 'bg-primary/30 hover:bg-primary/60 hover:scale-110'
                 }`}
                 aria-label={`Ir para imagem ${index + 1}`}
               />
