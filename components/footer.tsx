@@ -1,4 +1,5 @@
-import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react"
+import { Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   return (
@@ -7,10 +8,16 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-2xl text-primary-foreground font-bold">B</span>
+              <div className="w-12 h-12 flex items-center justify-center">
+                <Image
+                  src="/logos/Pierroti_Logo_Vermelha.svg"
+                  alt="Buffet Pierroti Eventos"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <span className="text-xl font-bold text-foreground">Buffet Show</span>
+              <span className="text-xl font-bold text-foreground">Buffet Pierrot Eventos</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Transformando eventos em experiências gastronômicas inesquecíveis!
@@ -83,23 +90,19 @@ export function Footer() {
 
             <div className="flex gap-3 mt-6">
               <a
-                href="#"
+                href="https://www.instagram.com/pierrotibuffeteeventos?igsh=ZnByY3VxdzFpeW43"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5 text-primary group-hover:text-primary-foreground" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group"
-                aria-label="Instagram"
+                aria-label="Instagram @pierrotibuffeteeventos"
               >
                 <Instagram className="w-5 h-5 text-primary group-hover:text-primary-foreground" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group"
-                aria-label="YouTube"
+                className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary flex items-center justify-center transition-colors group opacity-50 cursor-not-allowed"
+                aria-label="YouTube (em breve)"
+                title="YouTube em breve"
               >
                 <Youtube className="w-5 h-5 text-primary group-hover:text-primary-foreground" />
               </a>

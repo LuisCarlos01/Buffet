@@ -22,27 +22,30 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Video Placeholder */}
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/buffet-images/elegant-buffet-table-with-gourmet-dishes.jpg"
-          alt="Buffet elegante com pratos gourmet"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-        />
+        <div className="w-full h-full bg-muted flex items-center justify-center">
+          <div className="text-center text-muted-foreground">
+            <p className="text-lg font-semibold mb-2">Vídeo de Fundo</p>
+            <p className="text-sm">Aqui será inserido o vídeo principal do buffet</p>
+          </div>
+        </div>
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20 text-center">
-        {/* Logo Placeholder */}
+        {/* Logo */}
         <div className="mb-12 flex justify-center">
-          <div className="w-32 h-32 bg-primary/20 rounded-full flex items-center justify-center border-4 border-primary">
-            <span className="text-white text-sm font-semibold">SEU LOGO</span>
+          <div className="w-48 h-48 flex items-center justify-center">
+            <Image
+              src="/logos/Pierroti_Logo_Vermelha.svg"
+              alt="Buffet Pierroti Eventos"
+              width={192}
+              height={192}
+              className="w-full h-full object-contain"
+              priority
+            />
           </div>
         </div>
 

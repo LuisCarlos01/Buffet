@@ -159,8 +159,7 @@ export function ContactForm() {
                   </div>
                   <div>
                     <p className="font-semibold text-foreground mb-1">Telefone</p>
-                    <p className="text-muted-foreground">(11) 98765-4321</p>
-                    <p className="text-muted-foreground">(11) 3456-7890</p>
+                    <p className="text-muted-foreground">(35) 99140-4039</p>
                   </div>
                 </div>
 
@@ -170,8 +169,7 @@ export function ContactForm() {
                   </div>
                   <div>
                     <p className="font-semibold text-foreground mb-1">E-mail</p>
-                    <p className="text-muted-foreground">contato@buffetshow.com.br</p>
-                    <p className="text-muted-foreground">eventos@buffetshow.com.br</p>
+                    <p className="text-muted-foreground">pierrotbuffet@gmail.com</p>
                   </div>
                 </div>
 
@@ -181,8 +179,8 @@ export function ContactForm() {
                   </div>
                   <div>
                     <p className="font-semibold text-foreground mb-1">Endereço</p>
-                    <p className="text-muted-foreground">Av. Paulista, 1000 - Bela Vista</p>
-                    <p className="text-muted-foreground">São Paulo - SP, 01310-100</p>
+                    <p className="text-muted-foreground">R. Resende Silva, 18 - Centro</p>
+                    <p className="text-muted-foreground">Varginha - MG, 37006-050</p>
                   </div>
                 </div>
               </div>
