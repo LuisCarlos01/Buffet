@@ -5,17 +5,17 @@ export function Differentials() {
     {
       title: "Ingredientes Premium",
       description: "Trabalhamos apenas com ingredientes selecionados e de alta qualidade para garantir o melhor sabor.",
-      image: "/fresh-premium-ingredients-vegetables-meats-gourmet.jpg",
+      image: "/buffet-images/fresh-premium-ingredients-vegetables-meats-gourmet.jpg",
     },
     {
       title: "Equipe Profissional",
       description: "Nossa equipe é treinada e experiente, garantindo um serviço impecável do início ao fim.",
-      image: "/professional-catering-staff-in-uniform-serving-ele.jpg",
+      image: "/buffet-images/professional-catering-staff-in-uniform-serving-ele.jpg",
     },
     {
       title: "Cardápio Personalizado",
       description: "Criamos cardápios sob medida para seu evento, respeitando preferências e restrições alimentares.",
-      image: "/elegant-buffet-menu-variety-of-gourmet-dishes.jpg",
+      image: "/buffet-images/elegant-buffet-menu-variety-of-gourmet-dishes.jpg",
     },
   ]
 

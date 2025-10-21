@@ -1,27 +1,27 @@
 export function Gallery() {
   const images = [
     {
-      url: "/elegant-buffet-table-with-gourmet-dishes.jpg",
+      url: "/buffet-images/elegant-buffet-table-with-gourmet-dishes.jpg",
       alt: "Mesa de buffet elegante",
     },
     {
-      url: "/professional-chefs-preparing-food-at-event.jpg",
+      url: "/buffet-images/professional-chefs-preparing-food-at-event.jpg",
       alt: "Chefs preparando comida",
     },
     {
-      url: "/beautiful-event-decoration-with-buffet.jpg",
+      url: "/buffet-images/beautiful-event-decoration-with-buffet.jpg",
       alt: "Decoração de evento",
     },
     {
-      url: "/variety-of-gourmet-appetizers-on-display.jpg",
+      url: "/buffet-images/variety-of-gourmet-appetizers-on-display.jpg",
       alt: "Variedade de aperitivos",
     },
     {
-      url: "/dessert-buffet-table-with-elegant-presentation.jpg",
+      url: "/buffet-images/dessert-buffet-table-with-elegant-presentation.jpg",
       alt: "Mesa de sobremesas",
     },
     {
-      url: "/outdoor-buffet-event-setup.jpg",
+      url: "/buffet-images/outdoor-buffet-event-setup.jpg",
       alt: "Buffet ao ar livre",
     },
   ]
@@ -40,7 +40,7 @@ export function Gallery() {
               key={index}
               className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all hover:scale-105 duration-300"
             >
-              <img src={image.url || "/placeholder.svg"} alt={image.alt} className="w-full h-full object-cover" />
+              <img src={image.url || "/placeholders/placeholder.svg"} alt={image.alt} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>

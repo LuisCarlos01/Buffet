@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: "Buffet Pierroti Eventos",
     images: [
       {
-        url: "/elegant-buffet-table-with-gourmet-dishes.jpg",
+        url: "/buffet-images/elegant-buffet-table-with-gourmet-dishes.jpg",
         width: 1200,
         height: 630,
         alt: "Buffet Pierroti Eventos - Mesa elegante com pratos gourmet",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Buffet Pierroti Eventos - O Melhor Buffet Para Sua Festa",
     description: "Qualidade, sabor e atendimento impecável para transformar seu evento em uma experiência inesquecível.",
-    images: ["/elegant-buffet-table-with-gourmet-dishes.jpg"],
+    images: ["/buffet-images/elegant-buffet-table-with-gourmet-dishes.jpg"],
   },
   robots: {
     index: true,
