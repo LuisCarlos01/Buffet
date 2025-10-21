@@ -3,7 +3,6 @@
 import type React from 'react';
 import Image from 'next/image';
 
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
 import {
@@ -154,13 +153,13 @@ export function HeroSection() {
               maxLength={15}
             />
 
-            <Button
+            <button
               type='submit'
-              className='w-full h-12 text-lg font-semibold bg-accent hover:bg-accent/90 text-accent-foreground'
+              className='premium-cta-button w-full'
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Enviando...' : 'SOLICITAR ORÇAMENTO'}
-            </Button>
+            </button>
           </form>
         </div>
       </div>
