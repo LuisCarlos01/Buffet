@@ -2,6 +2,43 @@
  * Utilitários para integração com WhatsApp
  */
 
+/**
+ * Formatação de telefone brasileiro
+ */
+export function formatPhoneNumber(value: string): string {
+  // Remove todos os caracteres não numéricos
+  const numbers = value.replace(/\D/g, '')
+  
+  // Limita a 11 dígitos (DDD + 9 dígitos)
+  const limitedNumbers = numbers.slice(0, 11)
+  
+  // Aplica a máscara baseada no tamanho
+  if (limitedNumbers.length <= 2) {
+    return limitedNumbers
+  } else if (limitedNumbers.length <= 6) {
+    return `(${limitedNumbers.slice(0, 2)}) ${limitedNumbers.slice(2)}`
+  } else if (limitedNumbers.length <= 10) {
+    return `(${limitedNumbers.slice(0, 2)}) ${limitedNumbers.slice(2, 6)}-${limitedNumbers.slice(6)}`
+  } else {
+    return `(${limitedNumbers.slice(0, 2)}) ${limitedNumbers.slice(2, 7)}-${limitedNumbers.slice(7)}`
+  }
+}
+
+/**
+ * Valida se o telefone está no formato brasileiro correto
+ */
+export function isValidBrazilianPhone(phone: string): boolean {
+  const numbers = phone.replace(/\D/g, '')
+  return numbers.length >= 10 && numbers.length <= 11
+}
+
+/**
+ * Remove formatação do telefone para envio
+ */
+export function cleanPhoneNumber(phone: string): string {
+  return phone.replace(/\D/g, '')
+}
+
 export interface WhatsAppMessage {
   name: string
   email: string
@@ -68,8 +105,8 @@ export function validateFormData(data: Partial<WhatsAppMessage>): { isValid: boo
   
   if (!data.phone?.trim()) {
     errors.push('Telefone é obrigatório')
-  } else if (!/^\(\d{2}\)\s\d{4,5}-\d{4}$/.test(data.phone)) {
-    errors.push('Telefone deve estar no formato (DDD) XXXXX-XXXX')
+  } else if (!isValidBrazilianPhone(data.phone)) {
+    errors.push('Telefone deve ter 10 ou 11 dígitos no formato brasileiro')
   }
   
   if (data.eventDate && new Date(data.eventDate) < new Date()) {

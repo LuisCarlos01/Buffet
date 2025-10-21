@@ -6,7 +6,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
-import { openWhatsApp, validateFormData, type WhatsAppMessage } from "@/lib/whatsapp-utils"
+import { openWhatsApp, validateFormData, formatPhoneNumber, type WhatsAppMessage } from "@/lib/whatsapp-utils"
 
 export function HeroSection() {
   const [formData, setFormData] = useState({
@@ -128,12 +128,16 @@ export function HeroSection() {
 
             <Input
               type="tel"
-              placeholder="(DDD) + WhatsApp"
+              placeholder="(35) 99999-9999"
               value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              onChange={(e) => {
+                const formatted = formatPhoneNumber(e.target.value)
+                setFormData({ ...formData, phone: formatted })
+              }}
               className="bg-white/95 text-foreground placeholder:text-muted-foreground h-12"
               required
               disabled={isSubmitting}
+              maxLength={15}
             />
 
             <Button

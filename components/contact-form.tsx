@@ -5,7 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin, Send, MessageCircle } from "lucide-react"
-import { openWhatsApp, validateFormData, type WhatsAppMessage } from "@/lib/whatsapp-utils"
+import { openWhatsApp, validateFormData, formatPhoneNumber, type WhatsAppMessage } from "@/lib/whatsapp-utils"
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -62,10 +62,20 @@ export function ContactForm() {
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    const { name, value } = e.target
+    
+    if (name === 'phone') {
+      const formatted = formatPhoneNumber(value)
+      setFormData({
+        ...formData,
+        [name]: formatted,
+      })
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      })
+    }
   }
 
   return (
@@ -137,8 +147,10 @@ export function ContactForm() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
+                    placeholder="(35) 99999-9999"
                     className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed"
-                  disabled={isSubmitting}
+                    disabled={isSubmitting}
+                    maxLength={15}
                   />
                 </div>
               </div>
