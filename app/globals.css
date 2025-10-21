@@ -416,17 +416,98 @@
     }
   }
   
-  /* Premium button styles */
-  .premium-button {
-    background: linear-gradient(135deg, rgba(198, 54, 54, 0.1) 0%, rgba(165, 42, 42, 0.1) 100%);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(198, 54, 54, 0.2);
-    box-shadow: 0 8px 32px rgba(198, 54, 54, 0.1);
+  /* Premium FAQ Styles */
+  .faq-card {
+    position: relative;
+    overflow: hidden;
   }
   
-  .premium-button:hover {
-    background: linear-gradient(135deg, rgba(198, 54, 54, 0.9) 0%, rgba(165, 42, 42, 0.9) 100%);
-    box-shadow: 0 12px 40px rgba(198, 54, 54, 0.3);
-    transform: translateY(-2px);
+  .faq-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(198, 54, 54, 0.02) 0%, transparent 50%, rgba(165, 42, 42, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .faq-card:hover::before {
+    opacity: 1;
+  }
+  
+  .faq-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(198, 54, 54, 0.3) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+  }
+  
+  .faq-card:hover::after {
+    opacity: 1;
+  }
+  
+  /* FAQ Number Badge Animation */
+  .faq-card .flex-shrink-0 {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .faq-card:hover .flex-shrink-0 {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(198, 54, 54, 0.2);
+  }
+  
+  /* FAQ Answer Styling */
+  .faq-card .border-l-2 {
+    background: linear-gradient(180deg, rgba(198, 54, 54, 0.1) 0%, rgba(165, 42, 42, 0.05) 100%);
+    border-left: 2px solid transparent;
+    border-image: linear-gradient(180deg, rgba(198, 54, 54, 0.3) 0%, rgba(165, 42, 42, 0.3) 100%) 1;
+  }
+  
+  /* Responsive FAQ Adjustments */
+  @media (max-width: 768px) {
+    .faq-card {
+      border-radius: 1rem;
+    }
+    
+    .faq-card .px-8 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    .faq-card .py-6 {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    
+    .faq-card .pl-12 {
+      padding-left: 3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .faq-card .px-8 {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+    
+    .faq-card .py-6 {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+    
+    .faq-card .pl-12 {
+      padding-left: 2.5rem;
+    }
   }
 }
