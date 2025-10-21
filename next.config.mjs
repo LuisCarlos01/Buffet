@@ -4,7 +4,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  
+
   // Configurações de imagem otimizadas para Vercel
   images: {
     unoptimized: false,
@@ -15,6 +15,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

@@ -62,23 +62,27 @@ O **Buffet Pierroti Eventos** é um site institucional moderno desenvolvido como
 ## 🛠️ Stack Tecnológico
 
 ### 🎯 Core Framework
+
 - **[Next.js 15.2.4](https://nextjs.org/)** - Framework React com App Router
 - **[React 19](https://reactjs.org/)** - Biblioteca de interface de usuário
 - **[TypeScript 5](https://www.typescriptlang.org/)** - Tipagem estática
 - **[Tailwind CSS 4.1.9](https://tailwindcss.com/)** - Framework CSS utilitário
 
 ### 🧩 Componentes e UI
+
 - **[Radix UI](https://www.radix-ui.com/)** - Componentes acessíveis
 - **[shadcn/ui](https://ui.shadcn.com/)** - Sistema de design moderno
 - **[Lucide React](https://lucide.dev/)** - Biblioteca de ícones
 - **[Sonner](https://sonner.emilkowal.ski/)** - Notificações toast
 
 ### 📝 Formulários e Validação
+
 - **[React Hook Form](https://react-hook-form.com/)** - Gerenciamento de formulários
 - **[Zod](https://zod.dev/)** - Validação de esquemas
 - **[Hookform Resolvers](https://github.com/react-hook-form/resolvers)** - Resolvers de validação
 
 ### 📊 Analytics e Performance
+
 - **[Vercel Analytics](https://vercel.com/analytics)** - Analytics de performance
 - **[Embla Carousel](https://www.embla-carousel.com/)** - Componente de carrossel
 - **[Recharts](https://recharts.org/)** - Biblioteca de gráficos
@@ -117,12 +121,14 @@ graph TD
 ### 🔧 Passos de Instalação
 
 1. **Clone o repositório**
+
    ```bash
    git clone https://github.com/LuisCarlos01/buffet-pierroti-eventos.git
    cd buffet-pierroti-eventos
    ```
 
 2. **Instale as dependências**
+
    ```bash
    pnpm install
    # ou
@@ -130,12 +136,14 @@ graph TD
    ```
 
 3. **Configure as variáveis de ambiente**
+
    ```bash
    cp .env.example .env.local
    # Edite o arquivo .env.local com suas configurações
    ```
 
 4. **Execute o projeto em desenvolvimento**
+
    ```bash
    pnpm dev
    # ou
@@ -175,15 +183,15 @@ graph TD
 
 ```css
 /* Cores Principais */
---primary: oklch(0.25 0.03 60);      /* Marrom elegante */
---accent: oklch(0.65 0.18 45);       /* Laranja vibrante */
---background: oklch(0.98 0.01 85);   /* Fundo claro */
---foreground: oklch(0.15 0.02 60);   /* Texto escuro */
+--primary: oklch(0.25 0.03 60); /* Marrom elegante */
+--accent: oklch(0.65 0.18 45); /* Laranja vibrante */
+--background: oklch(0.98 0.01 85); /* Fundo claro */
+--foreground: oklch(0.15 0.02 60); /* Texto escuro */
 
 /* Cores de Suporte */
---muted: oklch(0.95 0.01 85);        /* Texto suave */
---border: oklch(0.9 0.01 85);        /* Bordas */
---card: oklch(1 0 0);                /* Cards */
+--muted: oklch(0.95 0.01 85); /* Texto suave */
+--border: oklch(0.9 0.01 85); /* Bordas */
+--card: oklch(1 0 0); /* Cards */
 ```
 
 ### 📏 Sistema de Espaçamento

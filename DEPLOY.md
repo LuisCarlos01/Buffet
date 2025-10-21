@@ -9,6 +9,7 @@
 ## 🔧 Configurações Implementadas
 
 ### ✅ Arquivos de Configuração Criados:
+
 - `vercel.json` - Configurações específicas da Vercel
 - `.vercelignore` - Arquivos ignorados no deploy
 - `env.example` - Exemplo de variáveis de ambiente
@@ -17,6 +18,7 @@
 - `public/manifest.json` - PWA support
 
 ### ✅ Otimizações Implementadas:
+
 - **Next.js Config**: Otimizado para produção
 - **Imagens**: WebP/AVIF com otimização automática
 - **SEO**: Metadados completos e estruturados
@@ -27,18 +29,21 @@
 ## 🚀 Passos para Deploy
 
 ### 1. **Conectar Repositório**
+
 ```bash
 # Acesse: https://vercel.com/new
 # Conecte com GitHub: LuisCarlos01/Buffet
 ```
 
 ### 2. **Configurar Projeto**
+
 - **Framework Preset**: Next.js
 - **Root Directory**: `./` (padrão)
 - **Build Command**: `npm run build` (automático)
 - **Output Directory**: `.next` (automático)
 
 ### 3. **Variáveis de Ambiente** (Opcional)
+
 ```bash
 # Adicione no painel da Vercel:
 NEXT_PUBLIC_SITE_URL=https://buffet-pierroti-eventos.vercel.app
@@ -48,6 +53,7 @@ NEXT_PUBLIC_CONTACT_EMAIL="contato@buffetpierroti.com.br"
 ```
 
 ### 4. **Deploy Automático**
+
 - ✅ Push para `main` → Deploy automático
 - ✅ Pull Requests → Preview deployments
 - ✅ Domínio customizado disponível
@@ -55,21 +61,25 @@ NEXT_PUBLIC_CONTACT_EMAIL="contato@buffetpierroti.com.br"
 ## 🌐 URLs de Deploy
 
 ### **Produção:**
+
 - **Vercel**: `https://buffet-pierroti-eventos.vercel.app`
 - **Custom**: `https://buffetpierroti.com.br` (após configurar DNS)
 
 ### **Preview:**
+
 - **PR Preview**: `https://buffet-pierroti-eventos-git-[branch]-luiscarlos01.vercel.app`
 
 ## 📊 Monitoramento
 
 ### **Analytics Incluídos:**
+
 - ✅ Vercel Analytics (automático)
 - ✅ Core Web Vitals
 - ✅ Performance metrics
 - ✅ Real User Monitoring
 
 ### **Logs Disponíveis:**
+
 - ✅ Build logs
 - ✅ Function logs
 - ✅ Edge logs
@@ -78,6 +88,7 @@ NEXT_PUBLIC_CONTACT_EMAIL="contato@buffetpierroti.com.br"
 ## 🔧 Comandos Úteis
 
 ### **Deploy Manual:**
+
 ```bash
 # Instalar Vercel CLI
 npm i -g vercel
@@ -90,6 +101,7 @@ vercel --prod
 ```
 
 ### **Verificar Build Local:**
+
 ```bash
 # Build de produção
 npm run build
@@ -104,6 +116,7 @@ npm run type-check
 ## 🎯 Próximos Passos
 
 ### **Após Deploy:**
+
 1. **Configurar Domínio**: Adicionar domínio customizado
 2. **Google Analytics**: Adicionar GA4 tracking
 3. **Search Console**: Submeter sitemap
@@ -111,6 +124,7 @@ npm run type-check
 5. **SEO**: Verificar indexação
 
 ### **Melhorias Futuras:**
+
 - **CMS**: Integrar Strapi/Sanity
 - **Email**: Configurar SendGrid/Resend
 - **Database**: Adicionar Supabase/PlanetScale
@@ -119,6 +133,7 @@ npm run type-check
 ## 🆘 Troubleshooting
 
 ### **Build Errors:**
+
 ```bash
 # Verificar logs
 vercel logs
@@ -128,11 +143,13 @@ npm run build
 ```
 
 ### **Performance Issues:**
+
 - Verificar bundle size: `npm run build:analyze`
 - Otimizar imagens: Converter para WebP
 - Lazy loading: Implementar em componentes
 
 ### **SEO Issues:**
+
 - Verificar sitemap: `/sitemap.xml`
 - Testar robots.txt: `/robots.txt`
 - Validar metadados: Google Rich Results

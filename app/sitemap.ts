@@ -1,8 +1,8 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://buffet-pierroti-eventos.vercel.app'
-  
+  const baseUrl = 'https://buffet-pierroti-eventos.vercel.app';
+
   return [
     {
       url: baseUrl,
@@ -40,5 +40,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
-  ]
+  ];
 }
