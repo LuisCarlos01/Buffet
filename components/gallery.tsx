@@ -2,23 +2,18 @@
 
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import {
-  ChevronLeft,
-  ChevronRight,
-  Play,
-  Pause,
-  RotateCcw,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import { useFadeInAnimation } from '@/hooks/use-fade-in';
 
 export function Gallery() {
   const fadeInRef = useFadeInAnimation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState(0);
-  const [rotation, setRotation] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const [dragOffset, setDragOffset] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   const images = [
     {
@@ -71,20 +66,40 @@ export function Gallery() {
   }, [isAutoPlaying, images.length]);
 
   const nextImage = () => {
+    if (isTransitioning) return;
+
+    setIsTransitioning(true);
     setCurrentIndex(prev => (prev + 1) % images.length);
+
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500);
   };
 
   const prevImage = () => {
+    if (isTransitioning) return;
+
+    setIsTransitioning(true);
     setCurrentIndex(prev => (prev - 1 + images.length) % images.length);
+
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500);
   };
 
   const toggleAutoPlay = () => {
     setIsAutoPlaying(!isAutoPlaying);
   };
 
-  const resetCarousel = () => {
-    setCurrentIndex(0);
-    setRotation(0);
+  const goToImage = (index: number) => {
+    if (isTransitioning) return;
+
+    setIsTransitioning(true);
+    setCurrentIndex(index);
+
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500);
   };
 
   // Drag functionality
@@ -98,20 +113,24 @@ export function Gallery() {
     if (!isDragging) return;
 
     const deltaX = e.clientX - dragStart;
-    const sensitivity = 0.5;
-    const newRotation = rotation + deltaX * sensitivity;
-    setRotation(newRotation);
+    setDragOffset(deltaX);
   };
 
   const handleMouseUp = () => {
     if (!isDragging) return;
 
     setIsDragging(false);
-
-    // Snap to nearest image
-    const snapRotation = Math.round(rotation / 60) * 60;
-    setRotation(snapRotation);
-    setCurrentIndex(Math.round(snapRotation / 60) % images.length);
+    
+    // Determine direction and move accordingly
+    if (Math.abs(dragOffset) > 50) {
+      if (dragOffset > 0) {
+        prevImage();
+      } else {
+        nextImage();
+      }
+    }
+    
+    setDragOffset(0);
   };
 
   // Touch events for mobile
@@ -125,20 +144,24 @@ export function Gallery() {
     if (!isDragging) return;
 
     const deltaX = e.touches[0].clientX - dragStart;
-    const sensitivity = 0.5;
-    const newRotation = rotation + deltaX * sensitivity;
-    setRotation(newRotation);
+    setDragOffset(deltaX);
   };
 
   const handleTouchEnd = () => {
     if (!isDragging) return;
 
     setIsDragging(false);
-
-    // Snap to nearest image
-    const snapRotation = Math.round(rotation / 60) * 60;
-    setRotation(snapRotation);
-    setCurrentIndex(Math.round(snapRotation / 60) % images.length);
+    
+    // Determine direction and move accordingly
+    if (Math.abs(dragOffset) > 50) {
+      if (dragOffset > 0) {
+        prevImage();
+      } else {
+        nextImage();
+      }
+    }
+    
+    setDragOffset(0);
   };
 
   return (
@@ -157,14 +180,14 @@ export function Gallery() {
           </p>
         </div>
 
-        {/* 3D Carousel Container */}
-        <div className='relative'>
-          <div className='carousel-3d-container'>
+        {/* Enhanced Horizontal Carousel Slider */}
+        <div className='relative overflow-hidden rounded-2xl shadow-2xl'>
+          <div className='horizontal-slider-container'>
             <div
-              ref={carouselRef}
-              className={`carousel-3d-track ${isDragging ? 'dragging' : ''}`}
+              ref={sliderRef}
+              className={`horizontal-slider-track ${isDragging ? 'dragging' : ''}`}
               style={{
-                transform: `translateZ(-300px) rotateY(${rotation}deg)`,
+                transform: `translateX(calc(-${currentIndex * 100}% + ${dragOffset}px))`,
               }}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
@@ -174,21 +197,16 @@ export function Gallery() {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
-              {images.map((image, index) => (
-                <div
-                  key={index}
-                  className='carousel-3d-item'
-                  style={{
-                    transform: `rotateY(${index * 60}deg) translateZ(300px)`,
-                  }}
-                >
-                  <div className='relative aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl'>
+              {/* Create infinite loop with duplicated images */}
+              {[...images, ...images, ...images].map((image, index) => (
+                <div key={index} className='horizontal-slider-item'>
+                  <div className='relative aspect-[4/3] overflow-hidden rounded-xl shadow-lg'>
                     <Image
                       src={image.url}
                       alt={image.alt}
                       width={image.width}
                       height={image.height}
-                      className='w-full h-full object-cover transition-transform duration-500 hover:scale-110'
+                      className='w-full h-full object-cover transition-transform duration-700 hover:scale-105'
                       placeholder='blur'
                       blurDataURL='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k='
                       sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
@@ -200,70 +218,55 @@ export function Gallery() {
             </div>
           </div>
 
-          {/* Navigation Controls */}
-          <div className='flex justify-center items-center gap-6 mt-12'>
+          {/* Enhanced Navigation Controls */}
+          <div className='absolute inset-y-0 left-0 right-0 flex items-center justify-between p-6 pointer-events-none'>
             <button
               onClick={prevImage}
-              className='w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 hover:from-primary hover:to-accent flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl backdrop-blur-sm border border-primary/20'
+              disabled={isTransitioning}
+              className='w-14 h-14 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed pointer-events-auto shadow-lg'
               aria-label='Imagem anterior'
             >
-              <ChevronLeft className='w-7 h-7 text-primary hover:text-primary-foreground' />
-            </button>
-
-            <button
-              onClick={toggleAutoPlay}
-              className='w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 hover:from-primary hover:to-accent flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl backdrop-blur-sm border border-primary/20'
-              aria-label={isAutoPlaying ? 'Pausar' : 'Reproduzir'}
-            >
-              {isAutoPlaying ? (
-                <Pause className='w-7 h-7 text-primary hover:text-primary-foreground' />
-              ) : (
-                <Play className='w-7 h-7 text-primary hover:text-primary-foreground' />
-              )}
-            </button>
-
-            <button
-              onClick={resetCarousel}
-              className='w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 hover:from-primary hover:to-accent flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl backdrop-blur-sm border border-primary/20'
-              aria-label='Resetar carousel'
-            >
-              <RotateCcw className='w-7 h-7 text-primary hover:text-primary-foreground' />
+              <ChevronLeft className='w-7 h-7 text-white' />
             </button>
 
             <button
               onClick={nextImage}
-              className='w-14 h-14 rounded-full bg-gradient-to-r from-primary/20 to-accent/20 hover:from-primary hover:to-accent flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-xl backdrop-blur-sm border border-primary/20'
+              disabled={isTransitioning}
+              className='w-14 h-14 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed pointer-events-auto shadow-lg'
               aria-label='Próxima imagem'
             >
-              <ChevronRight className='w-7 h-7 text-primary hover:text-primary-foreground' />
+              <ChevronRight className='w-7 h-7 text-white' />
             </button>
           </div>
 
-          {/* Instructions */}
-          <div className='text-center mt-6'>
-            <p className='text-sm text-muted-foreground/70'>
-              💡 Arraste para navegar livremente • Clique nos botões para
-              controle preciso
-            </p>
+          {/* Auto-play Control */}
+          <div className='absolute top-6 right-6'>
+            <button
+              onClick={toggleAutoPlay}
+              className='w-12 h-12 rounded-full bg-black/20 hover:bg-black/40 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg'
+              aria-label={isAutoPlaying ? 'Pausar' : 'Reproduzir'}
+            >
+              {isAutoPlaying ? (
+                <Pause className='w-6 h-6 text-white' />
+              ) : (
+                <Play className='w-6 h-6 text-white' />
+              )}
+            </button>
           </div>
 
-          {/* Dots Indicator */}
-          <div className='flex justify-center gap-3 mt-8'>
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentIndex(index);
-                  setRotation(index * -60);
-                }}
-                className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'bg-gradient-to-r from-primary to-accent scale-125 shadow-lg'
-                    : 'bg-primary/30 hover:bg-primary/60 hover:scale-110'
-                }`}
-                aria-label={`Ir para imagem ${index + 1}`}
-              />
-            ))}
+          {/* Progress Indicator */}
+          <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+            <div className='flex items-center gap-2 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2'>
+              <span className='text-white text-sm font-medium'>
+                {currentIndex + 1} / {images.length}
+              </span>
+              <div className='w-24 h-1 bg-white/20 rounded-full overflow-hidden'>
+                <div 
+                  className='h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-300'
+                  style={{ width: `${((currentIndex + 1) / images.length) * 100}%` }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
