@@ -19,14 +19,6 @@
 O **Buffet Pierroti Eventos** é um site desenvolvido como **MVP (Produto Mínimo Viável)**, com foco em **simplicidade, performance e experiência do usuário**.
 O objetivo é apresentar os serviços do buffet, permitir contato rápido via WhatsApp e criar base para evolução futura com painel administrativo e armazenamento de dados.
 
-## 👨‍💻 Desenvolvedor Responsável
-
-**Luiz Carlos Vitoriano Neto**  
-Front-End Developer
-
-[🌐 GitHub](https://github.com/LuisCarlos01)  
-[💼 LinkedIn](https://www.linkedin.com/in/luis-carlos-vitoriano-neto-56a58321b/)
-
 ---
 
 ## 📋 Índice
@@ -123,8 +115,8 @@ graph TD
 1. **Clone o repositório**
 
    ```bash
-   git clone https://github.com/LuisCarlos01/buffet-pierroti-eventos.git
-   cd buffet-pierroti-eventos
+   git clone https://github.com/LuisCarlos01/Buffet.git
+   cd Buffet
    ```
 
 2. **Instale as dependências**
@@ -209,7 +201,7 @@ graph TD
 ## 📁 Estrutura de Pastas
 
 ```
-📁 buffet-show/
+📁 Buffet/
 ├── 📁 app/                          # 🎯 Next.js App Router
 │   ├── 📄 layout.tsx               # 🏠 Layout raiz
 │   ├── 📄 page.tsx                 # 🏠 Página inicial
@@ -225,6 +217,7 @@ graph TD
 │   ├── 📄 faq.tsx                  # ❓ FAQ
 │   ├── 📄 contact-form.tsx         # 📝 Formulário contato
 │   ├── 📄 footer.tsx               # 🦶 Rodapé
+│   ├── 📄 structured-data.tsx      # 🔍 Dados estruturados SEO
 │   ├── 📄 theme-provider.tsx       # 🎨 Provedor de tema
 │   └── 📁 ui/                      # 🧩 Componentes UI
 │       ├── 📄 button.tsx           # 🔘 Botão
@@ -239,14 +232,27 @@ graph TD
 │   └── 📄 use-toast.ts             # 🔔 Hook toast
 │
 ├── 📁 lib/                          # 📚 Utilitários
-│   └── 📄 utils.ts                 # 🛠️ Funções utilitárias
+│   ├── 📄 utils.ts                 # 🛠️ Funções utilitárias
+│   └── 📄 whatsapp-utils.ts        # 📱 Utilitários WhatsApp
 │
 ├── 📁 public/                       # 🌐 Assets estáticos
-│   ├── 📄 placeholder-logo.svg     # 🏷️ Logo placeholder
-│   ├── 📄 placeholder-logo.png     # 🏷️ Logo PNG
-│   ├── 📄 placeholder-user.jpg     # 👤 Usuário placeholder
-│   ├── 📄 placeholder.jpg          # 🖼️ Imagem placeholder
-│   ├── 📄 placeholder.svg           # 🖼️ SVG placeholder
+│   ├── 📄 apple-touch-icon.png     # 🍎 Ícone Apple
+│   ├── 📄 apple-touch-icon.svg     # 🍎 Ícone Apple SVG
+│   ├── 📄 favicon.svg              # 🏷️ Favicon
+│   ├── 📄 manifest.json             # 📱 Manifest PWA
+│   ├── 📄 robots.txt               # 🤖 Robots.txt
+│   ├── 📄 sitemap.xml              # 🗺️ Sitemap XML
+│   ├── 📁 logos/                    # 🏢 Logos da empresa
+│   │   ├── 📄 Pierroti_Logo_Amarela.svg
+│   │   ├── 📄 Pierroti_Logo_Branca.svg
+│   │   ├── 📄 Pierroti_Logo_Preto.svg
+│   │   └── 📄 Pierroti_Logo_Vermelha.svg
+│   ├── 📁 placeholders/             # 🖼️ Imagens placeholder
+│   │   ├── 📄 placeholder-logo.png
+│   │   ├── 📄 placeholder-logo.svg
+│   │   ├── 📄 placeholder-user.jpg
+│   │   ├── 📄 placeholder.jpg
+│   │   └── 📄 placeholder.svg
 │   └── 📁 buffet-images/           # 🍽️ Imagens do buffet
 │       ├── 📄 elegant-buffet-table-with-gourmet-dishes.jpg
 │       ├── 📄 professional-chefs-preparing-food-at-event.jpg
@@ -262,12 +268,17 @@ graph TD
 │   └── 📄 globals.css              # 🌐 CSS global
 │
 ├── 📄 components.json              # ⚙️ Configuração shadcn/ui
+├── 📄 DEPLOY.md                     # 🚀 Guia de deploy
+├── 📄 env.example                   # 🔧 Exemplo de variáveis de ambiente
+├── 📄 IDV.md                        # 📋 Documentação IDV
+├── 📄 License                       # 📄 Licença MIT
 ├── 📄 next.config.mjs              # ⚙️ Configuração Next.js
-├── 📄 package.json                 # 📦 Dependências
-├── 📄 pnpm-lock.yaml               # 🔒 Lock file
-├── 📄 postcss.config.mjs           # ⚙️ Configuração PostCSS
-├── 📄 tsconfig.json                # ⚙️ Configuração TypeScript
-└── 📄 README.md                    # 📖 Este arquivo
+├── 📄 package.json                  # 📦 Dependências
+├── 📄 pnpm-lock.yaml                # 🔒 Lock file
+├── 📄 postcss.config.mjs            # ⚙️ Configuração PostCSS
+├── 📄 tsconfig.json                 # ⚙️ Configuração TypeScript
+├── 📄 vercel.json                   # ⚙️ Configuração Vercel
+└── 📄 README.md                     # 📖 Este arquivo
 ```
 
 ## 🔧 Scripts Disponíveis
@@ -305,10 +316,30 @@ pnpm lint
 # ou
 npm run lint
 
+# Executar linter com correção automática
+pnpm lint:fix
+# ou
+npm run lint:fix
+
 # Verificar tipos TypeScript
 pnpm type-check
 # ou
 npx tsc --noEmit
+
+# Formatar código com Prettier
+pnpm format
+# ou
+npm run format
+
+# Verificar formatação
+pnpm format:check
+# ou
+npm run format:check
+
+# Análise de bundle
+pnpm build:analyze
+# ou
+npm run build:analyze
 ```
 
 ### 🧩 Componentes
@@ -387,7 +418,7 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 **Desenvolvido por Luis Carlos Vitoriano Neto**
 
 - **Desenvolvedor**: Luis Carlos Vitoriano Neto
-- **Email**: [GitHub](https://github.com/LuisCarlos01)
+- **GitHub**: [LuisCarlos01](https://github.com/LuisCarlos01)
 - **LinkedIn**: [luis-carlos-vitoriano-neto-56a58321b](https://www.linkedin.com/in/luis-carlos-vitoriano-neto-56a58321b/)
 - **Projeto**: Buffet Pierroti Eventos MVP
 
@@ -397,7 +428,7 @@ Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE) par
 
 **⭐ Se este projeto foi útil, considere dar uma estrela! ⭐**
 
-[![GitHub stars](https://img.shields.io/github/stars/LuisCarlos01/buffet-pierroti-eventos?style=social)](https://github.com/LuisCarlos01/buffet-pierroti-eventos)
-[![GitHub forks](https://img.shields.io/github/forks/LuisCarlos01/buffet-pierroti-eventos?style=social)](https://github.com/LuisCarlos01/buffet-pierroti-eventos)
+[![GitHub stars](https://img.shields.io/github/stars/LuisCarlos01/Buffet?style=social)](https://github.com/LuisCarlos01/Buffet)
+[![GitHub forks](https://img.shields.io/github/forks/LuisCarlos01/Buffet?style=social)](https://github.com/LuisCarlos01/Buffet)
 
 </div>
