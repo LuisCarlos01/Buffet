@@ -1,0 +1,27 @@
+{
+  "name": "Buffet Pierroti Eventos",
+  "short_name": "Buffet Pierroti",
+  "description": "Site institucional do Buffet Pierroti Eventos - Qualidade, sabor e atendimento impecável para transformar seu evento em uma experiência inesquecível",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#a65c00",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/placeholder-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/placeholder-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "business", "lifestyle"],
+  "lang": "pt-BR",
+  "dir": "ltr"
+}

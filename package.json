@@ -1,12 +1,33 @@
 {
-  "name": "my-v0-project",
+  "name": "buffet-pierroti-eventos",
   "version": "0.1.0",
+  "description": "Site institucional moderno para Buffet Pierroti Eventos - MVP com foco em simplicidade e performance",
+  "author": "Luis Carlos Vitoriano Neto <luizcarlosvitorianoneto@gmail.com>",
+  "license": "MIT",
   "private": true,
+  "homepage": "https://buffet-pierroti-eventos.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LuisCarlos01/Buffet.git"
+  },
+  "keywords": [
+    "buffet",
+    "catering",
+    "eventos",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss"
+  ],
   "scripts": {
-    "build": "next build",
     "dev": "next dev",
-    "lint": "eslint .",
-    "start": "next start"
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "build:analyze": "ANALYZE=true next build",
+    "vercel-build": "next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

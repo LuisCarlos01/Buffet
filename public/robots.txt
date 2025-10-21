@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://buffet-pierroti-eventos.vercel.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin areas (quando implementadas)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
