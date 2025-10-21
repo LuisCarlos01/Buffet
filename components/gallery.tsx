@@ -45,7 +45,11 @@ export function Gallery() {
   ];
 
   return (
-    <section ref={fadeInRef} id='galeria' className='py-20 px-4 bg-muted/30 fade-in-section'>
+    <section
+      ref={fadeInRef}
+      id='galeria'
+      className='py-20 px-4 bg-muted/30 fade-in-section'
+    >
       <div className='container mx-auto max-w-6xl'>
         <div className='text-center mb-12 md:mb-16'>
           <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 px-4'>

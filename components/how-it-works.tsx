@@ -9,7 +9,11 @@ export function HowItWorks() {
   const videoSlideRef = useSlideInAnimation('right');
 
   return (
-    <section ref={fadeInRef} id='como-funciona' className='py-20 bg-background fade-in-section'>
+    <section
+      ref={fadeInRef}
+      id='como-funciona'
+      className='py-20 bg-background fade-in-section'
+    >
       <div className='container mx-auto px-4'>
         <div className='grid lg:grid-cols-2 gap-8 md:gap-12 items-center'>
           {/* Text Content */}
@@ -39,7 +43,10 @@ export function HowItWorks() {
           </div>
 
           {/* Video Placeholder */}
-          <div ref={videoSlideRef} className='relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-muted video-container'>
+          <div
+            ref={videoSlideRef}
+            className='relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-muted video-container'
+          >
             <div className='w-full h-full flex items-center justify-center'>
               <div className='text-center text-muted-foreground'>
                 <div className='w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4'>

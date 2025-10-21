@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 export function useSlideInAnimation(direction: 'left' | 'right' = 'right') {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const element = ref.current;
