@@ -2,9 +2,11 @@
 
 import { Button } from '@/components/ui/button';
 import { useFadeInAnimation } from '@/hooks/use-fade-in';
+import { useSlideInAnimation } from '@/hooks/use-slide-in';
 
 export function HowItWorks() {
   const fadeInRef = useFadeInAnimation();
+  const videoSlideRef = useSlideInAnimation('right');
 
   return (
     <section ref={fadeInRef} id='como-funciona' className='py-20 bg-background fade-in-section'>
@@ -37,7 +39,7 @@ export function HowItWorks() {
           </div>
 
           {/* Video Placeholder */}
-          <div className='relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-muted'>
+          <div ref={videoSlideRef} className='relative aspect-video rounded-lg overflow-hidden shadow-2xl bg-muted video-container'>
             <div className='w-full h-full flex items-center justify-center'>
               <div className='text-center text-muted-foreground'>
                 <div className='w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4'>

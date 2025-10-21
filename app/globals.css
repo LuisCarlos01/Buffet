@@ -177,4 +177,26 @@
   .smooth-link:hover::after {
     width: 100%;
   }
+  
+  /* Animação de slide-in para vídeo */
+  .video-slide-in {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .video-slide-in.visible {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  /* Efeito de escala sutil no hover do vídeo */
+  .video-container {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .video-container:hover {
+    transform: scale(1.02);
+  }
 }
