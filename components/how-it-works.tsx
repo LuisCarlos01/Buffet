@@ -23,6 +23,11 @@ export function HowItWorks() {
             <Button
               size='lg'
               className='bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8'
+              onClick={() => {
+                document.getElementById('inicio')?.scrollIntoView({
+                  behavior: 'smooth',
+                });
+              }}
             >
               SOLICITAR ORÇAMENTO
             </Button>

@@ -4,7 +4,7 @@ import type React from 'react';
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Phone, Mail, MapPin, Send, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import {
   openWhatsApp,
   validateFormData,
@@ -302,27 +302,11 @@ export function ContactForm() {
               <h4 className='font-semibold text-foreground mb-3'>
                 Horário de Atendimento
               </h4>
-              <div className='space-y-2 text-muted-foreground mb-4'>
+              <div className='space-y-2 text-muted-foreground'>
                 <p>Segunda a Sexta: 9h às 18h</p>
                 <p>Sábado: 9h às 14h</p>
                 <p>Domingo: Fechado</p>
               </div>
-
-              <Button
-                onClick={() => {
-                  const quickMessage: WhatsAppMessage = {
-                    name: 'Cliente',
-                    email: 'contato@site.com',
-                    phone: '(35) 99999-9999',
-                    source: 'contact',
-                  };
-                  openWhatsApp(quickMessage);
-                }}
-                className='w-full bg-green-600 hover:bg-green-700 text-white font-semibold'
-              >
-                <MessageCircle className='w-5 h-5 mr-2' />
-                Falar no WhatsApp
-              </Button>
             </div>
           </div>
         </div>

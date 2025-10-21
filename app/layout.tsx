@@ -42,6 +42,14 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL('https://buffet-pierroti-eventos.vercel.app'),
+  icons: {
+    icon: [
+      { url: '/icons/pierrot.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icons/pierrot.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [{ url: '/icons/pierrot.png', sizes: '180x180', type: 'image/png' }],
+    other: [{ rel: 'icon', url: '/icons/pierrot.png' }],
+  },
   alternates: {
     canonical: '/',
   },
