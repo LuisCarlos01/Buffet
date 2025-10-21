@@ -9,6 +9,12 @@
   "orientation": "portrait-primary",
   "icons": [
     {
+      "src": "/logos/Pierroti_Logo_Vermelha.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
       "src": "/icons/pierrot.png",
       "sizes": "192x192",
       "type": "image/png",

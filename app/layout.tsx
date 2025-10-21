@@ -44,11 +44,22 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://buffet-pierroti-eventos.vercel.app'),
   icons: {
     icon: [
+      {
+        url: '/logos/Pierroti_Logo_Vermelha.svg',
+        sizes: 'any',
+        type: 'image/svg+xml',
+      },
       { url: '/icons/pierrot.png', sizes: '32x32', type: 'image/png' },
       { url: '/icons/pierrot.png', sizes: '16x16', type: 'image/png' },
     ],
-    apple: [{ url: '/icons/pierrot.png', sizes: '180x180', type: 'image/png' }],
-    other: [{ rel: 'icon', url: '/icons/pierrot.png' }],
+    apple: [
+      {
+        url: '/logos/Pierroti_Logo_Vermelha.svg',
+        sizes: '180x180',
+        type: 'image/svg+xml',
+      },
+    ],
+    other: [{ rel: 'icon', url: '/logos/Pierroti_Logo_Vermelha.svg' }],
   },
   alternates: {
     canonical: '/',
