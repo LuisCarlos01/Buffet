@@ -187,10 +187,6 @@ export function Gallery() {
       <div className='relative z-10 max-w-7xl mx-auto'>
         {/* Header Section */}
         <div className='text-center mb-12 md:mb-16'>
-          <div className='inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-primary/10 text-primary text-xs md:text-sm font-medium mb-4 md:mb-6'>
-            <div className='w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-primary animate-pulse' />
-            Galeria Premium
-          </div>
           <h2 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 md:mb-6 leading-tight'>
             Nossos{' '}
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
