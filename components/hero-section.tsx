@@ -21,7 +21,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video Placeholder */}
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full bg-muted flex items-center justify-center">
@@ -36,8 +36,8 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20 text-center">
         {/* Logo */}
-        <div className="mb-12 flex justify-center">
-          <div className="w-48 h-48 flex items-center justify-center">
+        <div className="mb-8 md:mb-12 flex justify-center">
+          <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 flex items-center justify-center">
             <Image
               src="/logos/Pierroti_Logo_Vermelha.svg"
               alt="Buffet Pierroti Eventos"
@@ -50,17 +50,17 @@ export function HeroSection() {
         </div>
 
         {/* Main Heading */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 text-balance">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 text-balance">
           LEVE O MELHOR BUFFET PARA SUA FESTA
         </h1>
 
-        <p className="text-lg md:text-xl text-white/90 mb-12 max-w-3xl mx-auto text-pretty">
+        <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto text-pretty px-4">
           Qualidade, sabor e um atendimento impecável para transformar seu evento em uma experiência inesquecível!
         </p>
 
         {/* Form */}
-        <div className="max-w-md mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">PREENCHA SEUS DADOS</h2>
+        <div className="max-w-md mx-auto px-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">PREENCHA SEUS DADOS</h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input

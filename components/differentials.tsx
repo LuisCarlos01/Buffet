@@ -27,17 +27,17 @@ export function Differentials() {
   ]
 
   return (
-    <section className="py-20 bg-primary text-primary-foreground">
+    <section id="diferenciais" className="py-20 bg-primary text-primary-foreground">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">CONHEÇA NOSSOS DIFERENCIAIS</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 md:mb-16 px-4">CONHEÇA NOSSOS DIFERENCIAIS</h2>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           {differentials.map((item, index) => (
             <Card
               key={index}
               className="overflow-hidden bg-card border-2 border-accent/20 hover:border-accent transition-colors"
             >
-              <div className="relative h-64 bg-muted">
+              <div className="relative h-48 sm:h-56 md:h-64 bg-muted">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -50,10 +50,10 @@ export function Differentials() {
                 />
               </div>
 
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-card-foreground mb-4">{item.title}</h3>
+              <div className="p-4 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold text-card-foreground mb-3 md:mb-4">{item.title}</h3>
 
-                <p className="text-card-foreground/80 leading-relaxed">{item.description}</p>
+                <p className="text-sm md:text-base text-card-foreground/80 leading-relaxed">{item.description}</p>
               </div>
             </Card>
           ))}

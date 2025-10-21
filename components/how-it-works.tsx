@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button"
 
 export function HowItWorks() {
   return (
-    <section className="py-20 bg-background">
+    <section id="como-funciona" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Text Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">COMO FUNCIONA NOSSO BUFFET?</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 md:mb-6 px-4">COMO FUNCIONA NOSSO BUFFET?</h2>
 
-            <p className="text-lg text-foreground/80 leading-relaxed mb-8">
+            <p className="text-base md:text-lg text-foreground/80 leading-relaxed mb-6 md:mb-8 px-4">
               Levamos a experiência completa de um buffet de alta qualidade até você! Seja em casa, no salão de festas,
               na empresa ou até em um sítio, nossa equipe cuida de tudo para que você aproveite sem preocupações.
             </p>

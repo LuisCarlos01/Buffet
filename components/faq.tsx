@@ -50,11 +50,11 @@ export function FAQ() {
   ]
 
   return (
-    <section className="py-20 px-4 bg-background">
+    <section id="faq" className="py-20 px-4 bg-background">
       <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Perguntas Frequentes</h2>
-          <p className="text-lg text-muted-foreground">Tire suas dúvidas sobre nossos serviços</p>
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 px-4">Perguntas Frequentes</h2>
+          <p className="text-base md:text-lg text-muted-foreground px-4">Tire suas dúvidas sobre nossos serviços</p>
         </div>
 
         <div className="space-y-4">

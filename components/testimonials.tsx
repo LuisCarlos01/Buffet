@@ -25,18 +25,18 @@ export function Testimonials() {
   return (
     <section className="py-20 px-4 bg-background">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">O Que Nossos Clientes Dizem</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 px-4">O Que Nossos Clientes Dizem</h2>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
             Depoimentos reais de quem já experimentou nosso buffet
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-card p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-shadow"
+              className="bg-card p-6 md:p-8 rounded-2xl shadow-lg border border-border hover:shadow-xl transition-shadow"
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (

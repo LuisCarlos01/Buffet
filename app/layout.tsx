@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { StructuredData } from "@/components/structured-data"
 import "./globals.css"
 
 const geist = Geist({ subsets: ["latin"] })
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     default: "Buffet Pierroti Eventos - O Melhor Buffet Para Sua Festa",
     template: "%s | Buffet Pierroti Eventos"
   },
-  description: "Qualidade, sabor e atendimento impecável para transformar seu evento em uma experiência inesquecível. Buffet completo para casamentos, aniversários, formaturas e eventos corporativos.",
+  description: "Buffet Pierroti Eventos em Varginha-MG. Qualidade, sabor e atendimento impecável para transformar seu evento em uma experiência inesquecível. Serviço completo de buffet para casamentos, aniversários, formaturas e eventos corporativos.",
   keywords: [
     "buffet",
     "catering",
@@ -21,8 +22,16 @@ export const metadata: Metadata = {
     "aniversários",
     "formaturas",
     "eventos corporativos",
-    "São Paulo",
-    "SP"
+    "Varginha",
+    "Minas Gerais",
+    "MG",
+    "buffet completo",
+    "serviço de buffet",
+    "eventos sociais",
+    "confraternizações",
+    "buffet para festas",
+    "catering profissional",
+    "Pierroti Eventos"
   ],
   authors: [{ name: "Luis Carlos Vitoriano Neto" }],
   creator: "Luis Carlos Vitoriano Neto",
@@ -85,6 +94,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
+      <head>
+        <StructuredData />
+      </head>
       <body className={`${geist.className} antialiased`}>
         {children}
         <Analytics />
