@@ -173,7 +173,7 @@ export function Differentials() {
             <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
               DIFERENCIAIS
             </span>
-        </h2>
+          </h2>
           <p className='text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4'>
             Descubra o que nos torna únicos e especiais no mercado de buffet
           </p>
@@ -230,13 +230,13 @@ export function Differentials() {
                             transition: { duration: 0.4, ease: 'easeOut' },
                           }}
                         >
-                <Image
-                  src={item.image}
-                  alt={item.title}
+                          <Image
+                            src={item.image}
+                            alt={item.title}
                             fill
                             className='object-cover'
-                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                />
+                            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                          />
                         </motion.div>
                       </div>
 
@@ -260,7 +260,7 @@ export function Differentials() {
                           </svg>
                         </div>
                       </div>
-              </div>
+                    </div>
 
                     {/* Verso do Card - Mini Cardápio */}
                     <div className='flip-card-back'>
@@ -303,8 +303,8 @@ export function Differentials() {
                       </ul>
                     </div>
                   </div>
-              </div>
-            </Card>
+                </div>
+              </Card>
             </motion.div>
           ))}
         </div>
