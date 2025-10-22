@@ -236,7 +236,7 @@ export function Differentials() {
                       </div>
 
                       {/* Título na parte inferior */}
-                      <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4'>
+                      <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-2'>
                         <h3 className='text-white font-bold text-lg md:text-xl'>
                           {item.title}
                         </h3>
