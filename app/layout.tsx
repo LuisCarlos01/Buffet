@@ -9,11 +9,11 @@ const geist = Geist({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    default: 'Buffet Pierroti Eventos - O Melhor Buffet Para Sua Festa',
-    template: '%s | Buffet Pierroti Eventos',
+    default: 'Pierroti Buffet e Eventos - O Melhor Buffet Para Sua Festa',
+    template: '%s | Pierroti Buffet e Eventos',
   },
   description:
-    'Buffet Pierroti Eventos em Varginha-MG. Qualidade, sabor e atendimento impecável para transformar seu evento em uma experiência inesquecível. Serviço completo de buffet para casamentos, aniversários, formaturas e eventos corporativos.',
+    ' Pierroti Buffet e Eventos em Varginha-MG. Qualidade, sabor e atendimento impecável para transformar seu evento em uma experiência inesquecível. Serviço completo de buffet para casamentos, aniversários, formaturas e eventos corporativos.',
   keywords: [
     'buffet',
     'catering',
@@ -68,22 +68,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     url: 'https://buffet-pierroti-eventos.vercel.app',
-    title: 'Buffet Pierroti Eventos - O Melhor Buffet Para Sua Festa',
+    title: 'Pierroti Buffet e Eventos - O Melhor Buffet Para Sua Festa',
     description:
       'Qualidade, sabor e atendimento impecável para transformar seu evento em uma experiência inesquecível.',
-    siteName: 'Buffet Pierroti Eventos',
+    siteName: 'Pierroti Buffet e Eventos',
     images: [
       {
         url: '/buffet-images/elegant-buffet-table-with-gourmet-dishes.jpg',
         width: 1200,
         height: 630,
-        alt: 'Buffet Pierroti Eventos - Mesa elegante com pratos gourmet',
+        alt: 'Pierroti Buffet e Eventos - Mesa elegante com pratos gourmet',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Buffet Pierroti Eventos - O Melhor Buffet Para Sua Festa',
+    title: 'Pierroti Buffet e Eventos - O Melhor Buffet Para Sua Festa',
     description:
       'Qualidade, sabor e atendimento impecável para transformar seu evento em uma experiência inesquecível.',
     images: ['/buffet-images/elegant-buffet-table-with-gourmet-dishes.jpg'],

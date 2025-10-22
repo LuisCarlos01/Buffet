@@ -45,12 +45,14 @@ export interface WhatsAppMessage {
   phone: string;
   eventDate?: string;
   guests?: string;
+  eventType?: string;
+  cuisines?: string[];
   message?: string;
   source: 'hero' | 'contact';
 }
 
 export function generateWhatsAppMessage(data: WhatsAppMessage): string {
-  const { name, email, phone, eventDate, guests, message, source } = data;
+  const { name, email, phone, eventDate, guests, eventType, cuisines, message, source } = data;
 
   let messageText = `🍽️ *Nova solicitação de orçamento - Buffet Pierroti Eventos*\n\n`;
 
@@ -64,6 +66,14 @@ export function generateWhatsAppMessage(data: WhatsAppMessage): string {
 
   if (guests) {
     messageText += `👥 *Número de Convidados:* ${guests}\n`;
+  }
+
+  if (eventType) {
+    messageText += `🎉 *Tipo de Evento:* ${eventType}\n`;
+  }
+
+  if (cuisines && cuisines.length > 0) {
+    messageText += `🍽️ *Iguarias Desejadas:* ${cuisines.join(', ')}\n`;
   }
 
   if (message) {

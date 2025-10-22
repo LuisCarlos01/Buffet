@@ -1,26 +1,26 @@
-import { UtensilsCrossed, Flame, Sparkles } from 'lucide-react';
 import { useFadeInAnimation } from '@/hooks/use-fade-in';
+import Image from 'next/image';
 
 export function ProcessSteps() {
   const fadeInRef = useFadeInAnimation();
   const steps = [
     {
-      icon: UtensilsCrossed,
-      title: 'Entrada Especial',
+      title: 'Ingredientes Premium',
       description:
-        'A experiência começa com uma entrada especial de canapés e petiscos crocantes.',
+        'Ingredientes selecionados e de alta qualidade para o melhor sabor.',
+      image:
+        '/buffet-images/fresh-premium-ingredients-vegetables-meats-gourmet.jpg',
     },
     {
-      icon: Flame,
-      title: 'Pratos Principais',
-      description:
-        'Em seguida, servimos uma grande variedade de pratos quentes e frios, preparados na hora, até que todos estejam satisfeitos.',
+      title: 'Equipe Profissional',
+      description: 'Equipe treinada e experiente para um serviço impecável.',
+      image:
+        '/buffet-images/professional-catering-staff-in-uniform-serving-ele.jpg',
     },
     {
-      icon: Sparkles,
-      title: 'Sobremesas',
-      description:
-        'Para finalizar, nossas irresistíveis sobremesas encerram a noite com chave de ouro!',
+      title: 'Cardápio Personalizado',
+      description: 'Cardápios sob medida respeitando suas preferências.',
+      image: '/buffet-images/elegant-buffet-menu-variety-of-gourmet-dishes.jpg',
     },
   ];
 
@@ -41,32 +41,32 @@ export function ProcessSteps() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className='group process-step-card text-center relative'
+              className='group process-step-card text-center relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500'
             >
               {/* Card Background */}
               <div className='absolute inset-0 bg-gradient-to-br from-card/50 via-card/30 to-card/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-sm' />
 
+              {/* Image */}
+              <div className='relative h-48 md:h-56 overflow-hidden'>
+                <Image
+                  src={step.image}
+                  alt={step.title}
+                  fill
+                  className='object-cover group-hover:scale-105 transition-transform duration-500'
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                />
+                <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
+
+                {/* Step Number */}
+                <div className='absolute top-4 right-4 w-8 h-8 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-center shadow-md'>
+                  <span className='text-white text-sm font-bold'>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+              </div>
+
               {/* Content */}
               <div className='relative z-10 p-6 md:p-8'>
-                <div className='flex justify-center mb-6 md:mb-8'>
-                  <div className='relative'>
-                    {/* Icon Background Glow */}
-                    <div className='absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-lg scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500' />
-
-                    {/* Icon Container */}
-                    <div className='relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-primary via-primary/90 to-accent flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110'>
-                      <step.icon className='w-10 h-10 md:w-12 md:h-12 text-white group-hover:text-accent-foreground transition-colors duration-300' />
-                    </div>
-
-                    {/* Step Number */}
-                    <div className='absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-center shadow-md'>
-                      <span className='text-white text-sm font-bold'>
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
                 <h3 className='text-xl md:text-2xl font-bold text-foreground mb-4 md:mb-6 group-hover:text-primary transition-colors duration-300'>
                   {step.title}
                 </h3>

@@ -7,10 +7,10 @@ export function StructuredData() {
       'Buffet completo para eventos em Varginha-MG. Qualidade, sabor e atendimento impecável para casamentos, aniversários, formaturas e eventos corporativos.',
     url: 'https://buffet-pierroti-eventos.vercel.app',
     telephone: '+55-35-99140-4039',
-    email: 'pierrotbuffet@gmail.com',
+    email: 'pierrotibuffet@gmail.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'R. Resense Silva, 18',
+      streetAddress: 'R. Resende Silva, 22',
       addressLocality: 'Varginha',
       addressRegion: 'MG',
       addressCountry: 'BR',

@@ -1021,7 +1021,8 @@
     transform-style: preserve-3d;
   }
 
-  .differential-card:hover .flip-card-inner {
+  .differential-card:hover .flip-card-inner,
+  .differential-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
   }
 
@@ -1159,6 +1160,15 @@
   @media (max-width: 768px) {
     .differential-card:hover {
       transform: translateY(-4px);
+    }
+
+    .differential-card {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .differential-card:active {
+      transform: scale(0.98);
     }
 
     .differential-number {

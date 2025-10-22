@@ -18,6 +18,8 @@ export function ContactForm() {
     phone: '',
     eventDate: '',
     guests: '',
+    eventType: '',
+    cuisines: [] as string[],
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -54,6 +56,8 @@ export function ContactForm() {
         phone: '',
         eventDate: '',
         guests: '',
+        eventType: '',
+        cuisines: [],
         message: '',
       });
     } catch (_error) {
@@ -65,7 +69,9 @@ export function ContactForm() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
 
@@ -79,6 +85,20 @@ export function ContactForm() {
       setFormData({
         ...formData,
         [name]: value,
+      });
+    }
+  };
+
+  const handleCuisineChange = (cuisine: string, checked: boolean) => {
+    if (checked) {
+      setFormData({
+        ...formData,
+        cuisines: [...formData.cuisines, cuisine],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        cuisines: formData.cuisines.filter(c => c !== cuisine),
       });
     }
   };
@@ -220,6 +240,65 @@ export function ContactForm() {
 
               <div>
                 <label
+                  htmlFor='eventType'
+                  className='block text-sm font-medium text-foreground mb-2'
+                >
+                  Tipo de Evento *
+                </label>
+                <select
+                  id='eventType'
+                  name='eventType'
+                  required
+                  value={formData.eventType}
+                  onChange={handleChange}
+                  className='w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed'
+                  disabled={isSubmitting}
+                >
+                  <option value=''>Selecione o tipo de evento</option>
+                  <option value='Casamento'>Casamento</option>
+                  <option value='Evento Corporativo'>Evento Corporativo</option>
+                  <option value='Aniversário'>Aniversário</option>
+                  <option value='Formatura'>Formatura</option>
+                  <option value='Confraternização'>Confraternização</option>
+                  <option value='Outro'>Outro</option>
+                </select>
+              </div>
+
+              <div>
+                <label className='block text-sm font-medium text-foreground mb-2'>
+                  Iguarias Desejadas *
+                </label>
+                <div className='grid grid-cols-2 sm:grid-cols-3 gap-3'>
+                  {[
+                    'Fast Food',
+                    'Japonesa',
+                    'Brigadeiro de Colher',
+                    'Comida Italiana',
+                    'Comida de Boteco',
+                    'Espetinho',
+                    'Drinks',
+                  ].map(cuisine => (
+                    <label
+                      key={cuisine}
+                      className='flex items-center space-x-2 cursor-pointer'
+                    >
+                      <input
+                        type='checkbox'
+                        checked={formData.cuisines.includes(cuisine)}
+                        onChange={e =>
+                          handleCuisineChange(cuisine, e.target.checked)
+                        }
+                        className='rounded border-border text-primary focus:ring-primary focus:ring-2'
+                        disabled={isSubmitting}
+                      />
+                      <span className='text-sm text-foreground'>{cuisine}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label
                   htmlFor='message'
                   className='block text-sm font-medium text-foreground mb-2'
                 >
@@ -272,7 +351,7 @@ export function ContactForm() {
                   <div>
                     <p className='font-semibold text-foreground mb-1'>E-mail</p>
                     <p className='text-muted-foreground'>
-                      pierrotbuffet@gmail.com
+                      pierrotibuffet@gmail.com
                     </p>
                   </div>
                 </div>
@@ -286,7 +365,7 @@ export function ContactForm() {
                       Endereço
                     </p>
                     <p className='text-muted-foreground'>
-                      R. Resende Silva, 18 - Centro
+                      R. Resende Silva, 22 - Centro
                     </p>
                     <p className='text-muted-foreground'>
                       Varginha - MG, 37006-050

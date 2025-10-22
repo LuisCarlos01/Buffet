@@ -3,65 +3,25 @@
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import {
-  Star,
-  Users,
-  Palette,
-  Utensils,
-  Fish,
-  Heart,
-  Pizza,
-  Coffee,
-  Zap,
-  Wine,
-} from 'lucide-react';
+import { useState } from 'react';
+import { Utensils, Fish, Heart, Pizza, Coffee, Zap, Wine } from 'lucide-react';
 
 export function Differentials() {
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
+
+  const toggleCardFlip = (index: number) => {
+    setFlippedCards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
   const differentials = [
-    {
-      title: 'Ingredientes Premium',
-      description:
-        'Trabalhamos apenas com ingredientes selecionados e de alta qualidade para garantir o melhor sabor.',
-      image:
-        '/buffet-images/fresh-premium-ingredients-vegetables-meats-gourmet.jpg',
-      icon: Star,
-      specialties: [
-        'Carnes Nobres',
-        'Vegetais Orgânicos',
-        'Temperos Artesanais',
-        'Azeites Premium',
-        'Queijos Especiais',
-      ],
-    },
-    {
-      title: 'Equipe Profissional',
-      description:
-        'Nossa equipe é treinada e experiente, garantindo um serviço impecável do início ao fim.',
-      image:
-        '/buffet-images/professional-catering-staff-in-uniform-serving-ele.jpg',
-      icon: Users,
-      specialties: [
-        'Chefs Especializados',
-        'Garçons Treinados',
-        'Sommeliers',
-        'Confeiteiros',
-        'Bartenders',
-      ],
-    },
-    {
-      title: 'Cardápio Personalizado',
-      description:
-        'Criamos cardápios sob medida para seu evento, respeitando preferências e restrições alimentares.',
-      image: '/buffet-images/elegant-buffet-menu-variety-of-gourmet-dishes.jpg',
-      icon: Palette,
-      specialties: [
-        'Menu Vegetariano',
-        'Opções Veganas',
-        'Sem Glúten',
-        'Sem Lactose',
-        'Crianças',
-      ],
-    },
     {
       title: 'Fast Food Premium',
       description:
@@ -197,9 +157,14 @@ export function Differentials() {
               }}
               className='group'
             >
-              <Card className='differential-card overflow-hidden'>
+              <Card
+                className={`differential-card overflow-hidden ${flippedCards.has(index) ? 'flipped' : ''}`}
+                onClick={() => toggleCardFlip(index)}
+              >
                 <div className='flip-card'>
-                  <div className='flip-card-inner'>
+                  <div
+                    className={`flip-card-inner ${flippedCards.has(index) ? 'flipped' : ''}`}
+                  >
                     {/* Frente do Card */}
                     <div className='flip-card-front'>
                       {/* Número do card */}

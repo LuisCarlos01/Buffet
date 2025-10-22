@@ -5,9 +5,6 @@ import { useState, useEffect, useRef } from 'react';
 import {
   ChevronLeft,
   ChevronRight,
-  Play,
-  Pause,
-  Maximize2,
 } from 'lucide-react';
 import { useFadeInAnimation } from '@/hooks/use-fade-in';
 
@@ -19,7 +16,6 @@ export function Gallery() {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const images = [
@@ -273,47 +269,6 @@ export function Gallery() {
               </button>
             </div>
 
-            {/* Control Panel */}
-            <div className='absolute top-3 right-3 md:top-6 md:right-6 flex items-center gap-2 md:gap-3'>
-              <button
-                onClick={toggleAutoPlay}
-                className='w-10 h-10 md:w-12 md:h-12 rounded-full gallery-controls flex items-center justify-center transition-all duration-300 hover:scale-110 group'
-                aria-label={
-                  isAutoPlaying ? 'Pausar slideshow' : 'Reproduzir slideshow'
-                }
-              >
-                {isAutoPlaying ? (
-                  <Pause className='w-4 h-4 md:w-5 md:h-5 text-white group-hover:text-primary transition-colors' />
-                ) : (
-                  <Play className='w-4 h-4 md:w-5 md:h-5 text-white group-hover:text-primary transition-colors' />
-                )}
-              </button>
-
-              <button
-                onClick={() => setIsFullscreen(!isFullscreen)}
-                className='w-10 h-10 md:w-12 md:h-12 rounded-full gallery-controls flex items-center justify-center transition-all duration-300 hover:scale-110 group'
-                aria-label='Visualizar em tela cheia'
-              >
-                <Maximize2 className='w-4 h-4 md:w-5 md:h-5 text-white group-hover:text-primary transition-colors' />
-              </button>
-            </div>
-
-            {/* Progress Indicator */}
-            <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 md:bottom-6'>
-              <div className='flex items-center gap-2 md:gap-4 bg-white/10 backdrop-blur-md rounded-full px-3 py-2 md:px-6 md:py-3 border border-white/20 shadow-xl'>
-                <span className='text-white text-xs md:text-sm font-medium'>
-                  {currentIndex + 1} / {images.length}
-                </span>
-                <div className='w-16 h-1.5 md:w-32 md:h-2 bg-white/20 rounded-full overflow-hidden'>
-                  <div
-                    className='h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-500 ease-out'
-                    style={{
-                      width: `${((currentIndex + 1) / images.length) * 100}%`,
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Thumbnail Navigation */}
