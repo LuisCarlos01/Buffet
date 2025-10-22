@@ -9,7 +9,8 @@ export function useSmoothScroll() {
       const target = document.querySelector(targetId);
       if (!target) return;
 
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+      const targetPosition =
+        target.getBoundingClientRect().top + window.pageYOffset - 80;
       const startPosition = window.pageYOffset;
       const distance = targetPosition - startPosition;
       const duration = Math.min(Math.abs(distance) / 2, 1000); // Duração baseada na distância
@@ -24,7 +25,7 @@ export function useSmoothScroll() {
         if (startTime === null) startTime = currentTime;
         const timeElapsed = currentTime - startTime;
         const progress = Math.min(timeElapsed / duration, 1);
-        
+
         const easedProgress = easeOutCubic(progress);
         window.scrollTo(0, startPosition + distance * easedProgress);
 
@@ -38,9 +39,9 @@ export function useSmoothScroll() {
 
     // Adicionar listeners para todos os links de navegação
     const navigationLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     navigationLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
+      link.addEventListener('click', e => {
         e.preventDefault();
         const href = link.getAttribute('href');
         if (href) {

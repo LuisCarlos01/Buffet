@@ -28,17 +28,20 @@ export function useSlideInAnimation(direction: 'left' | 'right' = 'right') {
     if (!element) return;
 
     // Configurar estado inicial baseado no dispositivo
-    const initialTransform = isMobile 
+    const initialTransform = isMobile
       ? 'translateY(50px)' // No mobile, usar translateY para evitar problemas de overflow
-      : direction === 'right' ? 'translateX(100px)' : 'translateX(-100px)'; // No desktop, usar valores fixos em pixels
-    
+      : direction === 'right'
+        ? 'translateX(100px)'
+        : 'translateX(-100px)'; // No desktop, usar valores fixos em pixels
+
     element.style.transform = initialTransform;
     element.style.opacity = '0';
-    element.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    element.style.transition =
+      'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             // Animar para a posição final
             element.style.transform = 'translateX(0) translateY(0)';
@@ -48,7 +51,7 @@ export function useSlideInAnimation(direction: 'left' | 'right' = 'right') {
       },
       {
         threshold: isMobile ? 0.1 : 0.2, // Threshold menor no mobile para ativar mais cedo
-        rootMargin: isMobile ? '0px 0px -20px 0px' : '0px 0px -50px 0px' // Root margin menor no mobile
+        rootMargin: isMobile ? '0px 0px -20px 0px' : '0px 0px -50px 0px', // Root margin menor no mobile
       }
     );
 

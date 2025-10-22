@@ -45,19 +45,19 @@ export function ProcessSteps() {
             >
               {/* Card Background */}
               <div className='absolute inset-0 bg-gradient-to-br from-card/50 via-card/30 to-card/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-sm' />
-              
+
               {/* Content */}
               <div className='relative z-10 p-6 md:p-8'>
                 <div className='flex justify-center mb-6 md:mb-8'>
                   <div className='relative'>
                     {/* Icon Background Glow */}
                     <div className='absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-lg scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500' />
-                    
+
                     {/* Icon Container */}
                     <div className='relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-primary via-primary/90 to-accent flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500 group-hover:scale-110'>
                       <step.icon className='w-10 h-10 md:w-12 md:h-12 text-white group-hover:text-accent-foreground transition-colors duration-300' />
                     </div>
-                    
+
                     {/* Step Number */}
                     <div className='absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-center shadow-md'>
                       <span className='text-white text-sm font-bold'>
@@ -75,7 +75,7 @@ export function ProcessSteps() {
                   <p className='text-base md:text-lg text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300'>
                     {step.description}
                   </p>
-                  
+
                   {/* Decorative Line */}
                   <div className='absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-16 transition-all duration-500' />
                 </div>

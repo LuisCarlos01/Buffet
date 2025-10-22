@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import { useFadeInAnimation } from '@/hooks/use-fade-in';
 import { useSlideInAnimation } from '@/hooks/use-slide-in';
 
@@ -12,34 +11,46 @@ export function HowItWorks() {
     <section
       ref={fadeInRef}
       id='como-funciona'
-      className='py-20 bg-background fade-in-section'
+      className='relative py-24 px-4 bg-gradient-to-b from-background via-muted/10 to-background fade-in-section overflow-hidden'
     >
-      <div className='container mx-auto px-4'>
+      {/* Background Pattern */}
+      <div className='absolute inset-0 opacity-5'>
+        <div className='absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(198,54,54,0.1),transparent_50%)]' />
+        <div className='absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(165,42,42,0.1),transparent_50%)]' />
+        <div className='absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,224,169,0.1),transparent_50%)]' />
+      </div>
+
+      <div className='relative z-10 container mx-auto'>
         <div className='grid lg:grid-cols-2 gap-8 md:gap-12 items-center'>
           {/* Text Content */}
           <div>
-            <h2 className='text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4 md:mb-6 px-4'>
-              COMO FUNCIONA NOSSO BUFFET?
+            <h2 className='text-4xl sm:text-5xl md:text-6xl font-bold mb-6 md:mb-8 px-4 leading-tight'>
+              <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary animate-gradient-x'>
+                COMO FUNCIONA
+              </span>
+              <br />
+              <span className='text-foreground'>NOSSO BUFFET?</span>
             </h2>
 
-            <p className='text-base md:text-lg text-foreground/80 leading-relaxed mb-6 md:mb-8 px-4'>
+            <p className='text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 md:mb-10 px-4'>
               Levamos a experiência completa de um buffet de alta qualidade até
               você! Seja em casa, no salão de festas, na empresa ou até em um
               sítio, nossa equipe cuida de tudo para que você aproveite sem
               preocupações.
             </p>
 
-            <Button
-              size='lg'
-              className='bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8'
-              onClick={() => {
-                document.getElementById('inicio')?.scrollIntoView({
-                  behavior: 'smooth',
-                });
-              }}
-            >
-              SOLICITAR ORÇAMENTO
-            </Button>
+            <div className='px-4'>
+              <button
+                className='premium-cta-button'
+                onClick={() => {
+                  document.getElementById('inicio')?.scrollIntoView({
+                    behavior: 'smooth',
+                  });
+                }}
+              >
+                SOLICITAR ORÇAMENTO
+              </button>
+            </div>
           </div>
 
           {/* Video Placeholder */}

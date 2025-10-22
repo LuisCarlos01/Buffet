@@ -3,7 +3,6 @@
 import type React from 'react';
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import {
   openWhatsApp,
@@ -237,15 +236,14 @@ export function ContactForm() {
                 />
               </div>
 
-              <Button
+              <button
                 type='submit'
-                size='lg'
-                className='w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold'
+                className='premium-cta-button w-full flex items-center justify-center'
                 disabled={isSubmitting}
               >
                 <Send className='w-5 h-5 mr-2' />
                 {isSubmitting ? 'Enviando...' : 'Enviar Solicitação'}
-              </Button>
+              </button>
             </form>
           </div>
 
