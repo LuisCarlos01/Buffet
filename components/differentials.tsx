@@ -209,13 +209,6 @@ export function Differentials() {
                         {String(index + 1).padStart(2, '0')}
                       </div>
 
-                      {/* Badge de categoria */}
-                      <div className='absolute top-4 left-4 z-10'>
-                        <div className='bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl border border-white/30'>
-                          {item.title}
-                        </div>
-                      </div>
-
                       <div className='differential-image-container relative h-48 sm:h-56 md:h-64 bg-muted mt-0'>
                         <motion.div
                           initial={{ opacity: 0, scale: 1.2 }}
@@ -236,14 +229,14 @@ export function Differentials() {
                             src={item.image}
                             alt={item.title}
                             fill
-                            className='object-cover rounded-t-xl'
+                            className='object-cover'
                             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                           />
                         </motion.div>
                       </div>
 
-                      {/* Título na seção vermelha */}
-                      <div className='flex-grow flex items-center justify-center p-4 text-center rounded-b-xl'>
+                      {/* Título na parte inferior */}
+                      <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4'>
                         <h3 className='text-white font-bold text-lg md:text-xl'>
                           {item.title}
                         </h3>
@@ -283,13 +276,13 @@ export function Differentials() {
                       </motion.div>
 
                       <motion.div
-                        className='text-center mb-4'
+                        className='text-center mb-6'
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                       >
                         <p
-                          className='text-sm opacity-80 mt-1'
+                          className='text-lg font-semibold mb-2'
                           style={{ color: '#f5e0a9' }}
                         >
                           Cardápio Especial

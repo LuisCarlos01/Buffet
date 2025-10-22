@@ -917,7 +917,6 @@
     margin-top: 0;
     padding: 0;
     top: 0;
-    flex-shrink: 0;
   }
 
   .differential-image-container::after {
@@ -1031,8 +1030,6 @@
     backface-visibility: hidden;
     border-radius: inherit;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
   }
 
   .flip-card-back {
@@ -1082,14 +1079,14 @@
   }
 
   .menu-item {
-    padding: 0.5rem 0;
-    font-size: 0.875rem;
+    padding: 0.75rem 0;
+    font-size: 1rem;
     font-weight: 500;
-    color: #f5e0a9;
+    color: rgba(255, 255, 255, 0.9);
     opacity: 0;
     transform: translateX(-20px);
     animation: slideInMenuItem 0.6s ease-out forwards;
-    border-bottom: 1px solid rgba(245, 224, 169, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
   }
 
@@ -1099,7 +1096,7 @@
 
   .menu-item::before {
     content: '•';
-    color: #f5e0a9;
+    color: rgba(255, 255, 255, 0.7);
     margin-right: 0.5rem;
     font-weight: bold;
   }
@@ -1197,8 +1194,8 @@
     }
 
     .menu-item {
-      font-size: 0.75rem;
-      padding: 0.25rem 0;
+      font-size: 0.875rem;
+      padding: 0.5rem 0;
     }
 
     .menu-icon {
