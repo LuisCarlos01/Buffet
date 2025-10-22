@@ -240,6 +240,13 @@ export function Differentials() {
                             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                           />
                         </motion.div>
+
+                        {/* Título do card na parte inferior da imagem */}
+                        <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4'>
+                          <h3 className='text-white font-bold text-lg md:text-xl'>
+                            {item.title}
+                          </h3>
+                        </div>
                       </div>
 
                       {/* Seta curva elegante */}
@@ -281,8 +288,10 @@ export function Differentials() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                       >
-                        <h3 className='menu-title'>{item.title}</h3>
-                        <p className='text-sm opacity-80 mt-1'>
+                        <p
+                          className='text-sm opacity-80 mt-1'
+                          style={{ color: '#f5e0a9' }}
+                        >
                           Cardápio Especial
                         </p>
                       </motion.div>

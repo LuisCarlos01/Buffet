@@ -1082,11 +1082,11 @@
     padding: 0.5rem 0;
     font-size: 0.875rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
+    color: #f5e0a9;
     opacity: 0;
     transform: translateX(-20px);
     animation: slideInMenuItem 0.6s ease-out forwards;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(245, 224, 169, 0.3);
     position: relative;
   }
 
@@ -1096,7 +1096,7 @@
 
   .menu-item::before {
     content: '•';
-    color: rgba(255, 255, 255, 0.7);
+    color: #f5e0a9;
     margin-right: 0.5rem;
     font-weight: bold;
   }
