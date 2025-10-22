@@ -211,7 +211,7 @@ export function Differentials() {
 
                       {/* Badge de categoria */}
                       <div className='absolute top-4 left-4 z-10'>
-                        <div className='bg-[#A52A2A] backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl border border-white/20'>
+                        <div className='bg-white/20 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-bold shadow-xl border border-white/30'>
                           {item.title}
                         </div>
                       </div>

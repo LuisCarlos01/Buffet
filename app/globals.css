@@ -841,15 +841,15 @@
 
   .differential-card {
     position: relative;
-    background: linear-gradient(135deg, #f7e8e6 0%, #f2d7d5 100%);
-    border: 2px solid #962339;
+    background: #C63636;
+    border: 2px solid #A52A2A;
     border-radius: 1.5rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
     box-shadow:
-      0 8px 32px rgba(139, 120, 96, 0.08),
-      0 4px 16px rgba(139, 120, 96, 0.04),
-      0 2px 8px rgba(139, 120, 96, 0.02);
+      0 8px 32px rgba(198, 54, 54, 0.2),
+      0 4px 16px rgba(198, 54, 54, 0.1),
+      0 2px 8px rgba(198, 54, 54, 0.05);
     backdrop-filter: blur(10px);
     cursor: pointer;
     animation: subtlePulse 3s ease-in-out infinite;
@@ -865,7 +865,7 @@
     bottom: 0;
     background: linear-gradient(
       135deg,
-      rgba(232, 197, 194, 0.05) 0%,
+      rgba(255, 255, 255, 0.1) 0%,
       transparent 50%
     );
     opacity: 0;
@@ -875,13 +875,13 @@
 
   .differential-card:hover {
     transform: translateY(-16px) scale(1.05);
-    border-color: #7a1c2d;
+    border-color: #8B1E1E;
     box-shadow:
-      0 32px 64px rgba(139, 120, 96, 0.2),
-      0 16px 32px rgba(139, 120, 96, 0.12),
-      0 8px 16px rgba(139, 120, 96, 0.08),
-      0 0 0 2px rgba(150, 35, 57, 0.3);
-    background: linear-gradient(135deg, #f7e8e6 0%, #e8c5c2 100%);
+      0 32px 64px rgba(198, 54, 54, 0.3),
+      0 16px 32px rgba(198, 54, 54, 0.2),
+      0 8px 16px rgba(198, 54, 54, 0.1),
+      0 0 0 2px rgba(198, 54, 54, 0.4);
+    background: #B82D2D;
   }
 
   .differential-card:hover::before {
@@ -970,11 +970,7 @@
     right: 1rem;
     width: 3rem;
     height: 3rem;
-    background: linear-gradient(
-      135deg,
-      hsl(var(--accent)) 0%,
-      hsl(var(--primary)) 100%
-    );
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -985,8 +981,8 @@
     opacity: 0;
     transform: scale(0.8);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px hsl(var(--primary) / 0.3);
-    border: 2px solid hsl(var(--primary-foreground) / 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
   }
 
   .differential-card:hover .differential-number {
