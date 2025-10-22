@@ -122,7 +122,9 @@ export default function RootLayout({
       <body className={`${geist.className} antialiased`}>
         {children}
         <Analytics />
-        <SpeedInsights />
+        {process.env.NODE_ENV === 'production' && (
+          <SpeedInsights sampleRate={1} />
+        )}
       </body>
     </html>
   );

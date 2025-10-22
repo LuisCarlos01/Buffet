@@ -23,6 +23,11 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+
+  // Configurações para Vercel Analytics e Speed Insights
+  experimental: {
+    instrumentationHook: true,
+  },
 };
 
 export default nextConfig;
