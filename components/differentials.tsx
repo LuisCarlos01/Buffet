@@ -236,17 +236,17 @@ export function Differentials() {
                             src={item.image}
                             alt={item.title}
                             fill
-                            className='object-cover'
+                            className='object-cover rounded-t-xl'
                             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                           />
                         </motion.div>
+                      </div>
 
-                        {/* Título do card na parte inferior da imagem */}
-                        <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4'>
-                          <h3 className='text-white font-bold text-lg md:text-xl'>
-                            {item.title}
-                          </h3>
-                        </div>
+                      {/* Título na seção vermelha */}
+                      <div className='flex-grow flex items-center justify-center p-4 text-center rounded-b-xl'>
+                        <h3 className='text-white font-bold text-lg md:text-xl'>
+                          {item.title}
+                        </h3>
                       </div>
 
                       {/* Seta curva elegante */}

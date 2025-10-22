@@ -917,6 +917,7 @@
     margin-top: 0;
     padding: 0;
     top: 0;
+    flex-shrink: 0;
   }
 
   .differential-image-container::after {
@@ -1030,6 +1031,8 @@
     backface-visibility: hidden;
     border-radius: inherit;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .flip-card-back {
