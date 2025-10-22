@@ -1165,10 +1165,20 @@
     .differential-card {
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     .differential-card:active {
       transform: scale(0.98);
+    }
+
+    /* Melhorar flip no mobile */
+    .differential-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-inner {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .differential-number {

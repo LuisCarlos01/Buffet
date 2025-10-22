@@ -3,11 +3,24 @@
 import { Card } from '@/components/ui/card';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Utensils, Fish, Heart, Pizza, Coffee, Zap, Wine } from 'lucide-react';
 
 export function Differentials() {
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
+  const [isMobile, setIsMobile] = useState(false);
+  const touchStartRef = useRef<{ [key: number]: number }>({});
+  const touchEndRef = useRef<{ [key: number]: number }>({});
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const toggleCardFlip = (index: number) => {
     setFlippedCards(prev => {
@@ -19,6 +32,28 @@ export function Differentials() {
       }
       return newSet;
     });
+  };
+
+  const handleTouchStart = (e: React.TouchEvent, index: number) => {
+    touchStartRef.current[index] = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent, index: number) => {
+    if (!touchStartRef.current[index]) return;
+
+    touchEndRef.current[index] = e.changedTouches[0].clientX;
+    const deltaX = Math.abs(
+      touchEndRef.current[index] - touchStartRef.current[index]
+    );
+
+    // Se o movimento foi pequeno (tap), flip o card
+    if (deltaX < 10) {
+      toggleCardFlip(index);
+    }
+
+    // Limpar referências
+    delete touchStartRef.current[index];
+    delete touchEndRef.current[index];
   };
 
   const differentials = [
@@ -159,7 +194,9 @@ export function Differentials() {
             >
               <Card
                 className={`differential-card overflow-hidden ${flippedCards.has(index) ? 'flipped' : ''}`}
-                onClick={() => toggleCardFlip(index)}
+                onClick={!isMobile ? () => toggleCardFlip(index) : undefined}
+                onTouchStart={e => handleTouchStart(e, index)}
+                onTouchEnd={e => handleTouchEnd(e, index)}
               >
                 <div className='flip-card'>
                   <div
