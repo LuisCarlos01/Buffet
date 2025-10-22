@@ -52,7 +52,17 @@ export interface WhatsAppMessage {
 }
 
 export function generateWhatsAppMessage(data: WhatsAppMessage): string {
-  const { name, email, phone, eventDate, guests, eventType, cuisines, message, source } = data;
+  const {
+    name,
+    email,
+    phone,
+    eventDate,
+    guests,
+    eventType,
+    cuisines,
+    message,
+    source,
+  } = data;
 
   let messageText = `🍽️ *Nova solicitação de orçamento - Buffet Pierroti Eventos*\n\n`;
 

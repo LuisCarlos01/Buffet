@@ -2,10 +2,7 @@
 
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import {
-  ChevronLeft,
-  ChevronRight,
-} from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useFadeInAnimation } from '@/hooks/use-fade-in';
 
 export function Gallery() {
@@ -268,7 +265,6 @@ export function Gallery() {
                 <ChevronRight className='w-6 h-6 md:w-8 md:h-8 text-white group-hover:text-primary transition-colors' />
               </button>
             </div>
-
           </div>
 
           {/* Thumbnail Navigation */}
