@@ -34,8 +34,8 @@ export function HowItWorks() {
 
             <p className='text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 md:mb-10 px-4'>
               Levamos a experiência completa de um buffet de alta qualidade até
-              você! Seja em casa, no salão de festas, na empresa ou até em um
-              sítio, nossa equipe cuida de tudo para que você aproveite sem
+              você! Seja em casa, no salão de festas, na empresa ou em qualquer
+              local, nossa equipe cuida de tudo para que você aproveite sem
               preocupações.
             </p>
 
@@ -43,12 +43,12 @@ export function HowItWorks() {
               <button
                 className='premium-cta-button'
                 onClick={() => {
-                  document.getElementById('inicio')?.scrollIntoView({
+                  document.getElementById('contato')?.scrollIntoView({
                     behavior: 'smooth',
                   });
                 }}
               >
-                SOLICITAR ORÇAMENTO
+                ACELERE SEU ORÇAMENTO
               </button>
             </div>
           </div>
