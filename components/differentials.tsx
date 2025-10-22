@@ -242,20 +242,20 @@ export function Differentials() {
                         </h3>
                       </div>
 
-                      {/* Seta curva elegante */}
-                      <div className='absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0'>
-                        <div className='bg-white/30 backdrop-blur-sm rounded-full p-2 border border-white/40 shadow-lg'>
+                      {/* Botão de flip na parte superior */}
+                      <div className='absolute top-4 right-4 opacity-80 group-hover:opacity-100 transition-all duration-300'>
+                        <div className='bg-white/20 backdrop-blur-sm rounded-full p-1.5 border border-white/30 shadow-md hover:shadow-lg'>
                           <svg
-                            width='20'
-                            height='20'
+                            width='14'
+                            height='14'
                             viewBox='0 0 24 24'
                             fill='none'
-                            className='text-white group-hover:animate-bounce'
+                            className='text-white group-hover:animate-pulse'
                           >
                             <path
                               d='M7 17L17 7M17 7H7M17 7V17'
                               stroke='currentColor'
-                              strokeWidth='2.5'
+                              strokeWidth='2'
                               strokeLinecap='round'
                               strokeLinejoin='round'
                             />
