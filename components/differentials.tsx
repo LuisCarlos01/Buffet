@@ -192,123 +192,55 @@ export function Differentials() {
               }}
               className='group'
             >
-              <Card
-                className={`differential-card overflow-hidden ${flippedCards.has(index) ? 'flipped' : ''}`}
-                onClick={!isMobile ? () => toggleCardFlip(index) : undefined}
-                onTouchStart={e => handleTouchStart(e, index)}
-                onTouchEnd={e => handleTouchEnd(e, index)}
-              >
-                <div className='flip-card'>
-                  <div
-                    className={`flip-card-inner ${flippedCards.has(index) ? 'flipped' : ''}`}
-                  >
-                    {/* Frente do Card */}
-                    <div className='flip-card-front'>
-                      {/* Número do card */}
-                      <div className='differential-number'>
-                        {String(index + 1).padStart(2, '0')}
-                      </div>
-
-                      <div className='differential-image-container relative h-48 sm:h-56 md:h-64 bg-muted mt-0'>
-                        <motion.div
-                          initial={{ opacity: 0, scale: 1.2 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
+              {/* Card com Overlay de Menu */}
+              <div className='bg-[#962339] border-2 border-[#A52A2A] rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl'>
+                {/* Container da Imagem com Overlay */}
+                <div className='relative group'>
+                  <div className='relative h-48 sm:h-56 md:h-64'>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className='object-cover'
+                      sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                    />
+                  </div>
+                  
+                  {/* Overlay com Menu */}
+                  <div className='absolute inset-0 bg-[#962339]/95 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-4'>
+                    {/* Título do Cardápio */}
+                    <h4 className='text-[#f5e0a9] font-bold text-xl mb-4 text-center'>
+                      Cardápio Especial
+                    </h4>
+                    
+                    {/* Lista de Especialidades */}
+                    <ul className='space-y-2 text-center'>
+                      {item.specialties.map((specialty, specialtyIndex) => (
+                        <motion.li
+                          key={specialtyIndex}
+                          className='text-[#f5e0a9] text-base font-medium'
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
                           transition={{
-                            duration: 0.8,
-                            ease: [0.4, 0, 0.2, 1],
-                            delay: index * 0.1 + 0.2,
+                            duration: 0.3,
+                            delay: specialtyIndex * 0.1,
                           }}
                           viewport={{ once: true }}
-                          className='w-full h-full'
-                          whileHover={{
-                            scale: 1.05,
-                            transition: { duration: 0.4, ease: 'easeOut' },
-                          }}
                         >
-                          <Image
-                            src={item.image}
-                            alt={item.title}
-                            fill
-                            className='object-cover'
-                            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                          />
-                        </motion.div>
-                      </div>
-
-                      {/* Título na parte inferior */}
-                      <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-2'>
-                        <h3 className='text-white font-bold text-lg md:text-xl'>
-                          {item.title}
-                        </h3>
-                      </div>
-
-                      {/* Botão de flip na parte superior */}
-                      <div className='absolute top-4 right-4 opacity-80 group-hover:opacity-100 transition-all duration-300'>
-                        <div className='bg-white/20 backdrop-blur-sm rounded-full p-1.5 border border-white/30 shadow-md hover:shadow-lg'>
-                          <svg
-                            width='14'
-                            height='14'
-                            viewBox='0 0 24 24'
-                            fill='none'
-                            className='text-white group-hover:animate-pulse'
-                          >
-                            <path
-                              d='M7 17L17 7M17 7H7M17 7V17'
-                              stroke='currentColor'
-                              strokeWidth='2'
-                              strokeLinecap='round'
-                              strokeLinejoin='round'
-                            />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Verso do Card - Mini Cardápio */}
-                    <div className='flip-card-back'>
-                      <motion.div
-                        className='menu-icon'
-                        initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                      >
-                        <item.icon className='w-4 h-4' />
-                      </motion.div>
-
-                      <motion.div
-                        className='text-center mb-6'
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                      >
-                        <p
-                          className='text-lg font-semibold mb-2'
-                          style={{ color: '#f5e0a9' }}
-                        >
-                          Cardápio Especial
-                        </p>
-                      </motion.div>
-
-                      <ul className='menu-items'>
-                        {item.specialties.map((specialty, specialtyIndex) => (
-                          <motion.li
-                            key={specialtyIndex}
-                            className='menu-item'
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{
-                              duration: 0.4,
-                              delay: 0.4 + specialtyIndex * 0.1,
-                            }}
-                          >
-                            {specialty}
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </div>
+                          • {specialty}
+                        </motion.li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-              </Card>
+                
+                {/* Título */}
+                <div className='bg-[#962339] px-4 py-3'>
+                  <h3 className='text-[#f5e0a9] font-bold text-lg md:text-xl text-center'>
+                    {item.title}
+                  </h3>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
