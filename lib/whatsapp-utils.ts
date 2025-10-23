@@ -139,8 +139,8 @@ export function validateFormData(data: Partial<WhatsAppMessage>): {
     errors.push('Data do evento não pode ser no passado');
   }
 
-  if (data.guests && (isNaN(Number(data.guests)) || Number(data.guests) < 50)) {
-    errors.push('Número mínimo de convidados é 50');
+  if (data.guests && (isNaN(Number(data.guests)) || Number(data.guests) < 20)) {
+    errors.push('Número mínimo de convidados é 20');
   }
 
   return {

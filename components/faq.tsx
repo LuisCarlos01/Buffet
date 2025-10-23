@@ -17,7 +17,7 @@ export function FAQ() {
     {
       question: 'Qual é o número mínimo e máximo de convidados?',
       answer:
-        'Atendemos eventos a partir de 50 convidados. Não temos limite máximo - já realizamos eventos para mais de 1000 pessoas. Nossa estrutura se adapta ao tamanho do seu evento.',
+        'Atendemos eventos a partir de 20 convidados. Não temos limite máximo - já realizamos eventos para mais de 1000 pessoas. Nossa estrutura se adapta ao tamanho do seu evento.',
     },
     {
       question: 'Vocês fornecem toda a estrutura necessária?',
