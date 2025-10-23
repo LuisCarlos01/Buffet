@@ -202,7 +202,7 @@ export function Differentials() {
               className='group'
             >
               {/* Card com Overlay de Menu */}
-              <div 
+              <div
                 className='bg-[#962339] border-2 border-[#A52A2A] rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl'
                 onTouchStart={e => handleTouchStart(e, index)}
                 onTouchEnd={e => handleTouchEnd(e, index)}
@@ -220,11 +220,15 @@ export function Differentials() {
                   </div>
 
                   {/* Overlay com Menu */}
-                  <div className={`absolute inset-0 bg-[#962339]/95 transition-all duration-500 flex flex-col items-center justify-center p-4 ${
-                    isMobile 
-                      ? (touchedCards.has(index) ? 'opacity-100' : 'opacity-0')
-                      : 'opacity-0 group-hover:opacity-100'
-                  }`}>
+                  <div
+                    className={`absolute inset-0 bg-[#962339]/95 transition-all duration-500 flex flex-col items-center justify-center p-4 ${
+                      isMobile
+                        ? touchedCards.has(index)
+                          ? 'opacity-100'
+                          : 'opacity-0'
+                        : 'opacity-0 group-hover:opacity-100'
+                    }`}
+                  >
                     {/* Título do Cardápio */}
                     <h4 className='text-[#f5e0a9] font-bold text-xl mb-4 text-center'>
                       Cardápio Especial
