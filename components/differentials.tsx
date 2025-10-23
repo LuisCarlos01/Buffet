@@ -165,7 +165,7 @@ export function Differentials() {
         <div className='text-center mb-12 md:mb-16'>
           <h2 className='text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight'>
             CONHEÇA NOSSOS{' '}
-            <span className='text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent'>
+            <span className='text-transparent bg-clip-text bg-linear-to-r from-primary to-accent'>
               DIFERENCIAIS
             </span>
           </h2>
@@ -205,14 +205,14 @@ export function Differentials() {
                       sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                     />
                   </div>
-                  
+
                   {/* Overlay com Menu */}
                   <div className='absolute inset-0 bg-[#962339]/95 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-4'>
                     {/* Título do Cardápio */}
                     <h4 className='text-[#f5e0a9] font-bold text-xl mb-4 text-center'>
                       Cardápio Especial
                     </h4>
-                    
+
                     {/* Lista de Especialidades */}
                     <ul className='space-y-2 text-center'>
                       {item.specialties.map((specialty, specialtyIndex) => (
@@ -233,7 +233,7 @@ export function Differentials() {
                     </ul>
                   </div>
                 </div>
-                
+
                 {/* Título */}
                 <div className='bg-[#962339] px-4 py-3'>
                   <h3 className='text-[#f5e0a9] font-bold text-lg md:text-xl text-center'>
