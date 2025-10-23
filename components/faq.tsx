@@ -32,7 +32,7 @@ export function FAQ() {
     {
       question: 'Vocês atendem restrições alimentares?',
       answer:
-        'Sim, atendemos todas as restrições alimentares como vegetarianos, veganos, celíacos, intolerantes à lactose e outras necessidades especiais. Basta informar com antecedência.',
+        'Sim, atendemos todas as restrições alimentares como vegetarianos. Basta informar com antecedência para prepararmos opções adequadas.',
     },
     {
       question: 'Como funciona o pagamento?',

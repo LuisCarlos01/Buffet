@@ -56,13 +56,6 @@ export function ProcessSteps() {
                   sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 />
                 <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent' />
-
-                {/* Step Number */}
-                <div className='absolute top-4 right-4 w-8 h-8 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-center shadow-md'>
-                  <span className='text-white text-sm font-bold'>
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
               </div>
 
               {/* Content */}
